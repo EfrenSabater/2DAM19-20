@@ -15,14 +15,18 @@
             Text="Desarrollo de Interfaces"
             TextAlignment="Center"
             VerticalAlignment="Top" 
-            Width="1005" Height="141" FontSize="48" Foreground="#FF4896F3" OpacityMask="Black">
+            Width="1005" 
+            Height="141" 
+            FontSize="48" 
+            Foreground="#FF4896F3" 
+            OpacityMask="Black">
             <TextBlock.Effect>
                 <DropShadowEffect/>
             </TextBlock.Effect>
         </TextBlock>
         <RadioButton 
             Tag="36"
-            Checked="radioButton_Checked"
+            Checked="RadioButton_Checked"
             Content="Pequeño" 
             Margin="158,295,841,0" 
             VerticalAlignment="Top" 
@@ -39,7 +43,7 @@
         <RadioButton 
             Tag="48"
             IsChecked="true"
-            Checked="radioButton_Checked"
+            Checked="RadioButton_Checked"
             Content="Mediano" 
             HorizontalAlignment="Left" 
             Margin="496,296,0,0" 
@@ -56,7 +60,7 @@
         </RadioButton>
         <RadioButton 
             Tag="72"
-            Checked="radioButton_Checked"
+            Checked="RadioButton_Checked"
             Content="Grande" 
             HorizontalAlignment="Left" 
             Margin="841,294,0,0" 

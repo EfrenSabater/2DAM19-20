@@ -25,7 +25,7 @@ namespace UT2Actividad7
             InitializeComponent();
         }
 
-        private void radioButton_Checked(object sender, RoutedEventArgs e)
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
             escalableTextBlock.FontSize = Convert.ToDouble((sender as RadioButton).Tag.ToString());
         }
