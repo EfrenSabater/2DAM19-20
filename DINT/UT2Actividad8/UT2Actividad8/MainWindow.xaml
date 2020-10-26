@@ -1,0 +1,87 @@
+﻿<Window x:Class="UT2Actividad8.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UT2Actividad8"
+        mc:Ignorable="d"
+        Title="CuadrosTexto" Height="450" Width="800" Icon="iconoEjemplo.ico">
+  <Grid>
+    <TextBlock
+      HorizontalAlignment="Left"
+      Margin="118,106,0,0"
+      TextWrapping="Wrap"
+      Text="Nombre"
+      VerticalAlignment="Top"/>
+    <TextBox 
+      HorizontalAlignment="Left" 
+      Height="23" 
+      Margin="118,127,0,0" 
+      TextWrapping="Wrap" 
+      VerticalAlignment="Top" 
+      Width="120" 
+      KeyDown="NombreTextBox_KeyDown"/>
+    <TextBlock 
+      x:Name="pistaNombreTextBlock"
+      Visibility = "Hidden"
+      HorizontalAlignment="Left" 
+      Margin="271,131,0,0" 
+      TextWrapping="Wrap" 
+      Text="Nombre del cliente" 
+      TextAlignment="Center"
+      VerticalAlignment="Top" 
+      Width="116"/>
+
+    <TextBlock
+      HorizontalAlignment="Left"
+      Margin="118,200,0,0"
+      TextWrapping="Wrap"
+      Text="Apellido"
+      VerticalAlignment="Top"/>
+    <TextBox
+      HorizontalAlignment="Left"
+      Height="23"
+      Margin="118,221,0,0"
+      TextWrapping="Wrap"
+      VerticalAlignment="Top"
+      Width="120"
+      KeyDown="ApellidoTextBox_KeyDown"/>
+    <TextBlock
+      x:Name="pistaApellidoTextBlock"
+      Visibility = "Hidden"
+      HorizontalAlignment="Left"
+      Margin="271,225,0,0"
+      TextWrapping="Wrap"
+      Text="Apellido del cliente"
+      TextAlignment="Center"
+      VerticalAlignment="Top"
+      Width="116"/>
+
+    <TextBlock
+      HorizontalAlignment="Left"
+      Margin="118,309,0,0"
+      TextWrapping="Wrap"
+      Text="Edad"
+      VerticalAlignment="Top"/>
+    <TextBox
+      HorizontalAlignment="Left"
+      Height="23"
+      Margin="118,330,0,0"
+      TextWrapping="Wrap"
+      VerticalAlignment="Top"
+      Width="120"
+      KeyDown="EdadTextBox_KeyDown"/>
+    <TextBlock
+      x:Name="pistaEdadTextBlock"
+      Visibility = "Hidden"
+      HorizontalAlignment="Left"
+      Margin="271,334,0,0"
+      TextWrapping="Wrap"
+      Text="Edad incorrecta"
+      TextAlignment="Center"
+      VerticalAlignment="Top"
+      Width="116" 
+      Foreground="Red" 
+      FontWeight="Bold"/>
+  </Grid>
+</Window>

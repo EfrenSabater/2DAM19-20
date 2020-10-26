@@ -1,0 +1,15 @@
+C:\Users\AlumnoT2\source\repos\UT2Actividad8\UT2Actividad8\bin\Debug\UT2Actividad8.exe.config
+C:\Users\AlumnoT2\source\repos\UT2Actividad8\UT2Actividad8\bin\Debug\UT2Actividad8.exe
+C:\Users\AlumnoT2\source\repos\UT2Actividad8\UT2Actividad8\bin\Debug\UT2Actividad8.pdb
+C:\Users\AlumnoT2\source\repos\UT2Actividad8\UT2Actividad8\obj\Debug\UT2Actividad8.csprojAssemblyReference.cache
+C:\Users\AlumnoT2\source\repos\UT2Actividad8\UT2Actividad8\obj\Debug\MainWindow.g.cs
+C:\Users\AlumnoT2\source\repos\UT2Actividad8\UT2Actividad8\obj\Debug\App.g.cs
+C:\Users\AlumnoT2\source\repos\UT2Actividad8\UT2Actividad8\obj\Debug\UT2Actividad8_MarkupCompile.cache
+C:\Users\AlumnoT2\source\repos\UT2Actividad8\UT2Actividad8\obj\Debug\UT2Actividad8_MarkupCompile.lref
+C:\Users\AlumnoT2\source\repos\UT2Actividad8\UT2Actividad8\obj\Debug\MainWindow.baml
+C:\Users\AlumnoT2\source\repos\UT2Actividad8\UT2Actividad8\obj\Debug\UT2Actividad8.g.resources
+C:\Users\AlumnoT2\source\repos\UT2Actividad8\UT2Actividad8\obj\Debug\UT2Actividad8.Properties.Resources.resources
+C:\Users\AlumnoT2\source\repos\UT2Actividad8\UT2Actividad8\obj\Debug\UT2Actividad8.csproj.GenerateResource.cache
+C:\Users\AlumnoT2\source\repos\UT2Actividad8\UT2Actividad8\obj\Debug\UT2Actividad8.csproj.CoreCompileInputs.cache
+C:\Users\AlumnoT2\source\repos\UT2Actividad8\UT2Actividad8\obj\Debug\UT2Actividad8.exe
+C:\Users\AlumnoT2\source\repos\UT2Actividad8\UT2Actividad8\obj\Debug\UT2Actividad8.pdb
