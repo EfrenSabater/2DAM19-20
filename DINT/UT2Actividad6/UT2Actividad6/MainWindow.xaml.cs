@@ -25,12 +25,12 @@ namespace UT2Actividad6
             InitializeComponent();
         }
 
-        private void image_MouseEnter(object sender, MouseEventArgs e)
+        private void Image_MouseEnter(object sender, MouseEventArgs e)
         {
             (sender as Image).Opacity = 1.0;
         }
 
-        private void image_MouseLeave(object sender, MouseEventArgs e)
+        private void Image_MouseLeave(object sender, MouseEventArgs e)
         {
             (sender as Image).Opacity = .5;
         }

@@ -16,8 +16,8 @@
             Source="episodioIV.jpg" 
             Opacity=".5" 
             Stretch="Uniform" 
-            MouseEnter="image_MouseEnter" 
-            MouseLeave="image_MouseLeave"/>
+            MouseEnter="Image_MouseEnter" 
+            MouseLeave="Image_MouseLeave"/>
         <Image 
             HorizontalAlignment="Left" 
             Height="371" 
@@ -27,8 +27,8 @@
             Source="episodioV.jpg" 
             Opacity=".5" 
             Stretch="Uniform"
-            MouseEnter="image_MouseEnter" 
-            MouseLeave="image_MouseLeave"/>
+            MouseEnter="Image_MouseEnter" 
+            MouseLeave="Image_MouseLeave"/>
         <Image 
             HorizontalAlignment="Left" 
             Height="371" 
@@ -38,8 +38,8 @@
             Source="episodioVI.jpg" 
             Opacity=".5" 
             Stretch="Uniform"
-            MouseEnter="image_MouseEnter" 
-            MouseLeave="image_MouseLeave"/>
+            MouseEnter="Image_MouseEnter" 
+            MouseLeave="Image_MouseLeave"/>
 
     </Grid>
 </Window>
