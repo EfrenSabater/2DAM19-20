@@ -8,7 +8,32 @@
         Title="GestionarSalas" 
         Height="450" 
         Width="800">
-    <Grid>
+    <DockPanel LastChildFill="True">
+        <StackPanel DockPanel.Dock="Bottom"
+                    Orientation="Vertical">
+            <TextBlock>Numero de la sala:</TextBlock>
+            <TextBlock>Capacidad de la sala:</TextBlock>
+            <TextBlock>Disponibilidad de la sala:</TextBlock>
+        </StackPanel>
         
-    </Grid>
+        <StackPanel DockPanel.Dock="Right"
+                    Orientation="Vertical">
+            <Button>Agregar sala</Button>
+            <Button>Modificar sala</Button>
+        </StackPanel>
+        
+        <ScrollViewer VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Auto">
+            <ListBox ItemsSource="{Binding Path=ListaSalas}"
+                     SelectedItem="{Binding Path=SalaSeleccionada}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock>
+                            <Run Text="{Binding Path=Numero}"></Run>
+                        </TextBlock>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </ScrollViewer>
+    </DockPanel>
 </Window>

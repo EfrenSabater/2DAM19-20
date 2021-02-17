@@ -7,12 +7,10 @@ D:\DAM20-21\DINT\ProyectoWPF2\2DAM19-20\DINT\GestorCine\GestorCine\bin\Debug\Mat
 D:\DAM20-21\DINT\ProyectoWPF2\2DAM19-20\DINT\GestorCine\GestorCine\bin\Debug\MaterialDesignThemes.Wpf.pdb
 D:\DAM20-21\DINT\ProyectoWPF2\2DAM19-20\DINT\GestorCine\GestorCine\bin\Debug\MaterialDesignThemes.Wpf.xml
 D:\DAM20-21\DINT\ProyectoWPF2\2DAM19-20\DINT\GestorCine\GestorCine\obj\Debug\GestorCine.csprojAssemblyReference.cache
-D:\DAM20-21\DINT\ProyectoWPF2\2DAM19-20\DINT\GestorCine\GestorCine\obj\Debug\MainWindow.g.cs
 D:\DAM20-21\DINT\ProyectoWPF2\2DAM19-20\DINT\GestorCine\GestorCine\obj\Debug\App.g.cs
 D:\DAM20-21\DINT\ProyectoWPF2\2DAM19-20\DINT\GestorCine\GestorCine\obj\Debug\GestorCine_MarkupCompile.cache
 D:\DAM20-21\DINT\ProyectoWPF2\2DAM19-20\DINT\GestorCine\GestorCine\obj\Debug\GestorCine_MarkupCompile.lref
 D:\DAM20-21\DINT\ProyectoWPF2\2DAM19-20\DINT\GestorCine\GestorCine\obj\Debug\App.baml
-D:\DAM20-21\DINT\ProyectoWPF2\2DAM19-20\DINT\GestorCine\GestorCine\obj\Debug\MainWindow.baml
 D:\DAM20-21\DINT\ProyectoWPF2\2DAM19-20\DINT\GestorCine\GestorCine\obj\Debug\GestorCine.g.resources
 D:\DAM20-21\DINT\ProyectoWPF2\2DAM19-20\DINT\GestorCine\GestorCine\obj\Debug\GestorCine.Properties.Resources.resources
 D:\DAM20-21\DINT\ProyectoWPF2\2DAM19-20\DINT\GestorCine\GestorCine\obj\Debug\GestorCine.csproj.GenerateResource.cache
@@ -20,3 +18,8 @@ D:\DAM20-21\DINT\ProyectoWPF2\2DAM19-20\DINT\GestorCine\GestorCine\obj\Debug\Ges
 D:\DAM20-21\DINT\ProyectoWPF2\2DAM19-20\DINT\GestorCine\GestorCine\obj\Debug\GestorCine.csproj.CopyComplete
 D:\DAM20-21\DINT\ProyectoWPF2\2DAM19-20\DINT\GestorCine\GestorCine\obj\Debug\GestorCine.exe
 D:\DAM20-21\DINT\ProyectoWPF2\2DAM19-20\DINT\GestorCine\GestorCine\obj\Debug\GestorCine.pdb
+D:\DAM20-21\DINT\ProyectoWPF2\2DAM19-20\DINT\GestorCine\GestorCine\obj\Debug\Ventanas\GestionarSalas.g.cs
+D:\DAM20-21\DINT\ProyectoWPF2\2DAM19-20\DINT\GestorCine\GestorCine\obj\Debug\Ventanas\MainWindow.g.cs
+D:\DAM20-21\DINT\ProyectoWPF2\2DAM19-20\DINT\GestorCine\GestorCine\obj\Debug\Ventanas\GestionarSalas.baml
+D:\DAM20-21\DINT\ProyectoWPF2\2DAM19-20\DINT\GestorCine\GestorCine\obj\Debug\Ventanas\MainWindow.baml
+D:\DAM20-21\DINT\ProyectoWPF2\2DAM19-20\DINT\GestorCine\GestorCine\obj\Debug\GestorCine.csproj.Fody.CopyLocal.cache

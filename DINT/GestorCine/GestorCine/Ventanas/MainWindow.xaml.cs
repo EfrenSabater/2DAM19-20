@@ -24,5 +24,12 @@ namespace GestorCine
         {
             InitializeComponent();
         }
+
+        private void gestionarSalasButton_Click(object sender, RoutedEventArgs e)
+        {
+            GestionarSalas ventana = new GestionarSalas();
+            ventana.Owner = this;
+            ventana.Show();
+        }
     }
 }

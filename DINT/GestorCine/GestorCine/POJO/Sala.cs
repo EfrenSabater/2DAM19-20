@@ -9,64 +9,20 @@ namespace GestorCine.POJO
 {
     class Sala : INotifyPropertyChanged
     {
-        //private int _idSala;
-
-        private string _numero;
-        public string Numero
-        {
-            get => _numero;
-            set
-            {
-                if (_numero != value)
-                {
-                    _numero = value;
-                    NotifyPropertyChanged("Numero");
-                }
-            }
-        }
-
-        private int _capacidad;
-        public int Capacidad
-        {
-            get => _capacidad;
-            set
-            {
-                if (_capacidad != value)
-                {
-                    _capacidad = value;
-                    NotifyPropertyChanged("Capacidad");
-                }
-            }
-        }
-
-        private bool _disponible;
-        public bool Disponible
-        {
-            get => _disponible;
-            set
-            {
-                if (_disponible != value)
-                {
-                    _disponible = value;
-                    NotifyPropertyChanged("Disponible");
-                }
-            }
-        }
-
+        //private int IdSala;
+        public string Numero { get; set; }
+        public int Capacidad { get; set; }
+        public bool Disponible { get; set; }
+        
         public Sala() { }
 
         public Sala(string numero, int capacidad, bool disponible)
         {
-            _numero = numero;
-            _capacidad = capacidad;
-            _disponible = disponible;
+            Numero = numero;
+            Capacidad = capacidad;
+            Disponible = disponible;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-
-        public void NotifyPropertyChanged(string propertyName)
-        {
-            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
     }
 }

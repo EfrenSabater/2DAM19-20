@@ -24,7 +24,7 @@
     <StackPanel Orientation="Vertical"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center">
-        <Button>Gestionar salas</Button>
+        <Button x:Name="gestionarSalasButton" Click="gestionarSalasButton_Click">Gestionar salas</Button>
         <Button>Consultar salas</Button>
         <Button>Gestionar sesiones</Button>
         <Button>Venta de entradas</Button>
