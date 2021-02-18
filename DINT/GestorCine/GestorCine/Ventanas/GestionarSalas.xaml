@@ -4,36 +4,115 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GestorCine"
+        xmlns:commands="clr-namespace:GestorCine.Comandos"
         mc:Ignorable="d"
         Title="GestionarSalas" 
-        Height="450" 
-        Width="800">
+        MinHeight="650"
+        MinWidth="900"
+        Height="800" 
+        Width="1200">
+    <Window.CommandBindings>
+        <CommandBinding Command="commands:CustomCommands.AgregarSala"
+                        Executed="CommandBinding_Executed_AgregarSala">
+        </CommandBinding>
+        
+        <CommandBinding Command="commands:CustomCommands.ModificarSala"
+                        Executed="CommandBinding_Executed_ModificarSala"
+                        CanExecute="CommandBinding_CanExecute_ModificarSala">
+        </CommandBinding>
+    </Window.CommandBindings>
+    <Window.Resources>
+        <Style TargetType="StackPanel" x:Key="datosStackPanel">
+            <Setter Property="Orientation" Value="Vertical"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+        </Style>
+        
+        <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
+            <Setter Property="Margin" Value="0,0,0,10"></Setter>
+        </Style>
+        
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="40"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+            <Setter Property="Margin" Value="0,0,0,5"></Setter>
+        </Style>
+        
+        <Style TargetType="Border" x:Key="SeparadorBorder" BasedOn="{StaticResource {x:Type Border}}">
+            <Setter Property="BorderThickness" Value="0,5,0,0"></Setter>
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="estadoTextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Path=SalaSeleccionada.Disponible}" Value="True">
+                    <Setter Property="Foreground" Value="Green"></Setter>
+                    <Setter Property="Text" Value="DISPONIBLE"></Setter>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Path=SalaSeleccionada.Disponible}" Value="False">
+                    <Setter Property="Foreground" Value="Red"></Setter>
+                    <Setter Property="Text" Value="NO DISPONIBLE"></Setter>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    
     <DockPanel LastChildFill="True">
         <StackPanel DockPanel.Dock="Bottom"
-                    Orientation="Vertical">
-            <TextBlock>Numero de la sala:</TextBlock>
-            <TextBlock>Capacidad de la sala:</TextBlock>
-            <TextBlock>Disponibilidad de la sala:</TextBlock>
+                    Orientation="Vertical"
+                    Margin="10"
+                    Height="250">
+            <StackPanel Style="{StaticResource datosStackPanel}">
+                <TextBlock>Número de sala</TextBlock>
+                <Border Style="{StaticResource SeparadorBorder}">
+                    <TextBlock Text="{Binding Path=SalaSeleccionada.Numero}"></TextBlock>
+                </Border>
+            </StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" 
+                            Style="{StaticResource datosStackPanel}">
+                    <TextBlock>Capacidad</TextBlock>
+                    <Border Style="{StaticResource SeparadorBorder}">
+                        <TextBlock Text="{Binding Path=SalaSeleccionada.Capacidad}"></TextBlock>
+                    </Border>
+                    
+                </StackPanel>
+                <StackPanel Grid.Column="1" 
+                            Style="{StaticResource datosStackPanel}">
+                    <TextBlock>Estado</TextBlock>
+                    <Border Style="{StaticResource SeparadorBorder}">
+                        <TextBlock Style="{StaticResource estadoTextBlock}"></TextBlock>
+                    </Border>
+                </StackPanel>
+            </Grid>
         </StackPanel>
         
         <StackPanel DockPanel.Dock="Right"
-                    Orientation="Vertical">
-            <Button>Agregar sala</Button>
+                    Orientation="Vertical"
+                    Margin="10"
+                    Width="200">
+            <Button Command="commands:CustomCommands.AgregarSala">Agregar sala</Button>
             <Button>Modificar sala</Button>
         </StackPanel>
-        
-        <ScrollViewer VerticalScrollBarVisibility="Auto"
+
+        <Border BorderThickness="2px"
+                Margin="10">
+            <ScrollViewer VerticalScrollBarVisibility="Auto"
                       HorizontalScrollBarVisibility="Auto">
-            <ListBox ItemsSource="{Binding Path=ListaSalas}"
+                <ListBox ItemsSource="{Binding Path=ListaSalas}"
                      SelectedItem="{Binding Path=SalaSeleccionada}">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock>
-                            <Run Text="{Binding Path=Numero}"></Run>
-                        </TextBlock>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-        </ScrollViewer>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock FontSize="30">
+                                <Run Text="Sala "></Run>
+                                <Run Text="{Binding Path=Numero}"></Run>
+                            </TextBlock>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </ScrollViewer>
+        </Border>
     </DockPanel>
 </Window>

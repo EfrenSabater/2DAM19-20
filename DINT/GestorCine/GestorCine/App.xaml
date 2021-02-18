@@ -11,6 +11,10 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            <!-- Cambiar el color de los bordes al de los botones de Material Design -->
+            <Style TargetType="Border">
+                <Setter Property="BorderBrush" Value="{DynamicResource PrimaryHueMidBrush}"></Setter>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

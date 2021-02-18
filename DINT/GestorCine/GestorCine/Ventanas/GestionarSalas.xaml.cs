@@ -1,4 +1,5 @@
-﻿using GestorCine.VM;
+﻿using GestorCine.Ventanas;
+using GestorCine.VM;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,23 @@ namespace GestorCine
             _vm = new GestionarSalasVM();
             InitializeComponent();
             DataContext = _vm;
+        }
+
+        private void CommandBinding_Executed_AgregarSala(object sender, ExecutedRoutedEventArgs e)
+        {
+            AgregarSala ventana = new AgregarSala();
+            ventana.Owner = this;
+            ventana.Show();
+        }
+
+        private void CommandBinding_Executed_ModificarSala(object sender, ExecutedRoutedEventArgs e)
+        {
+            
+        }
+
+        private void CommandBinding_CanExecute_ModificarSala(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
         }
     }
 }

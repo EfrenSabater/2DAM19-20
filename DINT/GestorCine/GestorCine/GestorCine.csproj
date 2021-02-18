@@ -67,7 +67,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Comandos\CustomCommands.cs" />
     <Compile Include="Servicios\ServicioSala.cs" />
+    <Compile Include="Ventanas\AgregarSala.xaml.cs">
+      <DependentUpon>AgregarSala.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Ventanas\GestionarSalas.xaml.cs">
       <DependentUpon>GestionarSalas.xaml</DependentUpon>
     </Compile>
@@ -77,6 +81,10 @@
     <Compile Include="POJO\Venta.cs" />
     <Compile Include="VM\GestionarSalasVM.cs" />
     <Compile Include="VM\MainWindowVM.cs" />
+    <Page Include="Ventanas\AgregarSala.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Ventanas\GestionarSalas.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

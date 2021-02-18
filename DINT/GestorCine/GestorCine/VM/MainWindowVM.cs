@@ -12,13 +12,6 @@ namespace GestorCine.VM
 
         public MainWindowVM() { }
 
-        // No sé si es necesario
-        public GestionarSalas CrearGestionarSalas()
-        {
-            GestionarSalas ventana = new GestionarSalas();
-            return ventana;
-        }
-
         public event PropertyChangedEventHandler PropertyChanged;
     }
 }
