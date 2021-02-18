@@ -69,6 +69,7 @@
     </ApplicationDefinition>
     <Compile Include="Comandos\CustomCommands.cs" />
     <Compile Include="Servicios\ServicioSala.cs" />
+    <Compile Include="Servicios\ServicioSesion.cs" />
     <Compile Include="Ventanas\AgregarSala.xaml.cs">
       <DependentUpon>AgregarSala.xaml</DependentUpon>
     </Compile>
@@ -79,13 +80,21 @@
     <Compile Include="POJO\Sala.cs" />
     <Compile Include="POJO\Sesion.cs" />
     <Compile Include="POJO\Venta.cs" />
+    <Compile Include="Ventanas\GestionarSesiones.xaml.cs">
+      <DependentUpon>GestionarSesiones.xaml</DependentUpon>
+    </Compile>
     <Compile Include="VM\GestionarSalasVM.cs" />
+    <Compile Include="VM\GestionarSesionesVM.cs" />
     <Compile Include="VM\MainWindowVM.cs" />
     <Page Include="Ventanas\AgregarSala.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Ventanas\GestionarSalas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas\GestionarSesiones.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
