@@ -16,7 +16,6 @@ namespace GestorCine.POJO
         
         public Sala() { }
 
-        // Constructor utilizado para insertar datos de prueba, sin que pertenezca a la BD
         public Sala(string numero, int capacidad, bool disponible)
         {
             Numero = numero;
