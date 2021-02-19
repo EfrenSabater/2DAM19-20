@@ -1,4 +1,5 @@
 ﻿using GestorCine.POJO;
+using Microsoft.Data.Sqlite;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,7 +11,15 @@ namespace GestorCine.Servicios
 {
     class ServicioSala
     {
-        public ServicioSala() { }
+        private readonly SqliteConnection _conexion;
+        private SqliteCommand _comando;
+
+        public ServicioSala() 
+        {
+            _conexion = new SqliteConnection("Data Source=salas.db");
+            CrearTabla();
+            InsertarDatos();
+        }
 
         public ObservableCollection<Sala> ObtenerSalas()
         {
@@ -23,6 +32,28 @@ namespace GestorCine.Servicios
             };
 
             return salas;
+        }
+
+        private void CrearTabla()
+        {
+            _conexion.Open();
+            _comando = _conexion.CreateCommand();
+            // Código de creación proporcionado por el proyecto
+            _comando.CommandText = @"DROP TABLE IF EXISTS salas;
+                                    CREATE TABLE salas (
+                                        idSala     INTEGER PRIMARY KEY AUTOINCREMENT,
+                                        numero     TEXT,
+                                        capacidad  INTEGER,
+                                        disponible BOOLEAN DEFAULT (true) 
+                                    );";
+            _comando.ExecuteNonQuery();
+
+            _conexion.Close();
+        }
+
+        private void InsertarDatos()
+        {
+            throw new NotImplementedException();
         }
     }
 }
