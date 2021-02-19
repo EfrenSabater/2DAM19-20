@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GestorCine.VM;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,19 +18,23 @@ namespace GestorCine.Ventanas
     
     public partial class AgregarSala : Window
     {
+        private AgregarSalaVM _vm;
+
         public AgregarSala()
         {
+            _vm = new AgregarSalaVM();
             InitializeComponent();
+            DataContext = _vm;
         }
 
         private void CommandBinding_Executed_AgregarSala(object sender, ExecutedRoutedEventArgs e)
         {
-            
+            _vm.AgregarSala();
         }
 
         private void CommandBinding_CanExecute_AgregarSala(object sender, CanExecuteRoutedEventArgs e)
         {
-            e.CanExecute = false;
+            e.CanExecute = _vm.SalaValida();
         }
     }
 }

@@ -119,6 +119,7 @@
     <Compile Include="Ventanas\GestionarSesiones.xaml.cs">
       <DependentUpon>GestionarSesiones.xaml</DependentUpon>
     </Compile>
+    <Compile Include="VM\AgregarSalaVM.cs" />
     <Compile Include="VM\GestionarSalasVM.cs" />
     <Compile Include="VM\GestionarSesionesVM.cs" />
     <Compile Include="VM\MainWindowVM.cs" />

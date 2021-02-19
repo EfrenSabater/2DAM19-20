@@ -83,6 +83,23 @@ namespace GestorCine.Servicios
             _conexion.Close();
         }
 
+        public void InsertarSala(Sala sala)
+        {
+            _conexion.Open();
+            _comando = _conexion.CreateCommand();
+
+            _comando.CommandText = "INSERT INTO salas (numero, capacidad, disponible) VALUES (@numero, @capacidad, @disponible)";
+            _comando.Parameters.Add("@numero", SqliteType.Text);
+            _comando.Parameters.Add("@capacidad", SqliteType.Integer);
+            _comando.Parameters.Add("@disponible", SqliteType.Integer);
+            _comando.Parameters["@numero"].Value = sala.Numero;
+            _comando.Parameters["@capacidad"].Value = sala.Capacidad;
+            _comando.Parameters["@disponible"].Value = sala.Disponible;
+            _comando.ExecuteNonQuery();
+
+            _conexion.Close();
+        }
+
         public void ActualizarSala(Sala sala)
         {
             _conexion.Open();

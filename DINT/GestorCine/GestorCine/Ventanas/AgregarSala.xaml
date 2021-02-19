@@ -41,12 +41,12 @@
         <StackPanel DockPanel.Dock="Top"
                 Orientation="Vertical">
             <TextBlock>Número de sala</TextBlock>
-            <TextBox></TextBox>
+            <TextBox Text="{Binding Path=NuevaSala.Numero}"></TextBox>
             <TextBlock>Capacidad de la sala</TextBlock>
-            <TextBox></TextBox>
+            <TextBox Text="{Binding Path=NuevaSala.Capacidad}"></TextBox>
             <TextBlock>Disponibilidad</TextBlock>
             <ComboBox>
-                <ComboBoxItem IsSelected="True">Disponible</ComboBoxItem>
+                <ComboBoxItem IsSelected="{Binding Path=NuevaSala.Disponible}">Disponible</ComboBoxItem>
                 <ComboBoxItem>No disponible</ComboBoxItem>
             </ComboBox>
         </StackPanel>
@@ -55,7 +55,8 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0">Agregar</Button>
+            <Button Grid.Column="0"
+                    Command="commands:CustomCommands.AgregarSala">Agregar</Button>
             <Button Grid.Column="1">Cancelar</Button>
         </Grid>
     </DockPanel>
