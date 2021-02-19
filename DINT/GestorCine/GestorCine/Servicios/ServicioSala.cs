@@ -23,13 +23,28 @@ namespace GestorCine.Servicios
 
         public ObservableCollection<Sala> ObtenerSalas()
         {
-            // TODO: IMPLEMENTAR ACCESO A BD
-            ObservableCollection<Sala> salas = new ObservableCollection<Sala>()
+            ObservableCollection<Sala> salas = new ObservableCollection<Sala>();
+
+            _conexion.Open();
+            _comando = _conexion.CreateCommand();
+
+            _comando.CommandText = "SELECT * FROM salas";
+            SqliteDataReader lector = _comando.ExecuteReader();
+
+            if (lector.HasRows)
             {
-                new Sala("1A", 50, true),
-                new Sala("1B", 35, true),
-                new Sala("2A", 70, true)
-            };
+                while (lector.Read())
+                {
+                    int idSala = lector.GetInt32(0);
+                    string numero = lector.GetString(1);
+                    int capacidad = lector.GetInt32(2);
+                    bool disponible = lector.GetBoolean(3);
+                    salas.Add(new Sala(idSala, numero, capacidad, disponible));
+                }
+            }
+
+            lector.Close();
+            _conexion.Close();
 
             return salas;
         }
@@ -53,7 +68,37 @@ namespace GestorCine.Servicios
 
         private void InsertarDatos()
         {
-            throw new NotImplementedException();
+            _conexion.Open();
+            _comando = _conexion.CreateCommand();
+
+            _comando.CommandText = "DELETE FROM salas";
+            _comando.ExecuteNonQuery();
+            _comando.CommandText = "INSERT INTO salas(numero, capacidad, disponible) VALUES ('1A', 50, true)";
+            _comando.ExecuteNonQuery();
+            _comando.CommandText = "INSERT INTO salas(numero, capacidad, disponible) VALUES ('1B', 35, true)";
+            _comando.ExecuteNonQuery();
+            _comando.CommandText = "INSERT INTO salas(numero, capacidad, disponible) VALUES ('2A', 70, true)";
+            _comando.ExecuteNonQuery();
+
+            _conexion.Close();
+        }
+
+        public void ActualizarSala(Sala sala)
+        {
+            _conexion.Open();
+            _comando = _conexion.CreateCommand();
+
+            _comando.CommandText = "UPDATE salas SET capacidad=@capacidad , disponible=@disponible " +
+                                   "WHERE idSala=@idSala";
+            _comando.Parameters.Add("@capacidad", SqliteType.Integer);
+            _comando.Parameters.Add("@disponible", SqliteType.Integer);
+            _comando.Parameters.Add("@idSala", SqliteType.Integer);
+            _comando.Parameters["@capacidad"].Value = sala.Capacidad;
+            _comando.Parameters["@disponible"].Value = sala.Disponible;
+            _comando.Parameters["@idSala"].Value = sala.IdSala;
+            _comando.ExecuteNonQuery();
+
+            _conexion.Close();
         }
     }
 }

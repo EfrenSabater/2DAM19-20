@@ -45,6 +45,34 @@
                 </DataTrigger>
             </Style.Triggers>
         </Style>
+
+        <Style TargetType="TextBlock" x:Key="modificarTextBlock">
+            <Setter Property="FontSize" Value="10"></Setter>
+        </Style>
+
+        <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedLightButton}">
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+            <Setter Property="Width" Value="90"></Setter>
+            <Setter Property="Margin" Value="0,40,0,0"></Setter>
+        </Style>
+
+        <Style TargetType="StackPanel" x:Key="hiddenStackPanel">
+            <Setter Property="Orientation" Value="Vertical"></Setter>
+            <Setter Property="Margin" Value="0,30,0,0"></Setter>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Path=NuevaSala}" Value="{x:Null}">
+                    <Setter Property="Visibility" Value="Hidden"></Setter>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="ComboBoxItem" x:Key="noDisponibleComboBoxItem">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Path=SalaSeleccionada.Disponible}" Value="false">
+                    <Setter Property="IsSelected" Value="true"></Setter>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
     </Window.Resources>
     
     <DockPanel LastChildFill="True">
@@ -87,7 +115,32 @@
                     Width="200">
             <Button Command="commands:CustomCommands.AgregarSala"
                     Style="{StaticResource stackedButton}">Agregar sala</Button>
-            <Button Style="{StaticResource stackedButton}">Modificar sala</Button>
+            <Button Command="commands:CustomCommands.ModificarSala"
+                    Style="{StaticResource stackedButton}">Modificar sala</Button>
+            <StackPanel Style="{StaticResource hiddenStackPanel}">
+                <TextBlock Style="{StaticResource modificarTextBlock}">Modificando la sala:</TextBlock>
+                <TextBox IsEnabled="False"
+                         Text="{Binding Path=NuevaSala.Numero}"></TextBox>
+                <TextBlock Style="{StaticResource modificarTextBlock}">Capacidad de la sala:</TextBlock>
+                <TextBox Text="{Binding Path=NuevaSala.Capacidad}"></TextBox>
+                <TextBlock Style="{StaticResource modificarTextBlock}">Disponibilidad de la sala:</TextBlock>
+                <ComboBox>
+                    <ComboBoxItem IsSelected="{Binding NuevaSala.Disponible}">Disponible</ComboBoxItem>
+                    <ComboBoxItem Style="{StaticResource noDisponibleComboBoxItem}">No disponible</ComboBoxItem>
+                </ComboBox>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0"
+                            x:Name="guardarCambiosButton"
+                            Click="guardarCambiosButton_Click">Guardar</Button>
+                    <Button Grid.Column="1"
+                            x:Name="cancelarCambiosButton"
+                            Click="cancelarCambiosButton_Click">Cancelar</Button>
+                </Grid>
+            </StackPanel>
         </StackPanel>
 
         <Border BorderThickness="2px"

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,8 +21,29 @@ namespace GestorCine.VM
         public GestionarSalasVM()
         {
             _servicio = new ServicioSala();
-            NuevaSala = new Sala();
             ListaSalas = _servicio.ObtenerSalas();
+        }
+
+        public bool HaySalaSeleccionada()
+        {
+            return SalaSeleccionada != null;
+        }
+
+        public void ModificarSala()
+        {
+            NuevaSala = new Sala(SalaSeleccionada);
+        }
+
+        public void GuardarCambios()
+        {
+            _servicio.ActualizarSala(NuevaSala);
+            NuevaSala = null;
+            ListaSalas = _servicio.ObtenerSalas();
+        }
+
+        public void CancelarCambios()
+        {
+            NuevaSala = null;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

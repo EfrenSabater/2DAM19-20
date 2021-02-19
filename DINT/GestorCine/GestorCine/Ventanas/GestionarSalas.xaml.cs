@@ -30,17 +30,27 @@ namespace GestorCine
         {
             AgregarSala ventana = new AgregarSala();
             ventana.Owner = this;
-            ventana.Show();
+            ventana.ShowDialog();
         }
 
         private void CommandBinding_Executed_ModificarSala(object sender, ExecutedRoutedEventArgs e)
         {
-            
+            _vm.ModificarSala();
         }
 
         private void CommandBinding_CanExecute_ModificarSala(object sender, CanExecuteRoutedEventArgs e)
         {
-            e.CanExecute = true;
+            e.CanExecute = _vm.HaySalaSeleccionada();
+        }
+
+        private void guardarCambiosButton_Click(object sender, RoutedEventArgs e)
+        {
+            _vm.GuardarCambios();
+        }
+
+        private void cancelarCambiosButton_Click(object sender, RoutedEventArgs e)
+        {
+            _vm.CancelarCambios();
         }
     }
 }

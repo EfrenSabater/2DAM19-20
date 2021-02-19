@@ -16,7 +16,7 @@ namespace GestorCine.VM
         public ObservableCollection<Sesion> ListaSesiones { get; set; }
         public Sesion NuevaSesion;
         public Sesion SesionSeleccionada;
-        public ServicioSesion _servicio;
+        private ServicioSesion _servicio;
 
         public GestionarSesionesVM() 
         {
