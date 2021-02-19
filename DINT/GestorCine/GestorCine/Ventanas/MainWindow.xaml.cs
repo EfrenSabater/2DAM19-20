@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GestorCine.Ventanas;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,6 +29,13 @@ namespace GestorCine
         private void gestionarSalasButton_Click(object sender, RoutedEventArgs e)
         {
             GestionarSalas ventana = new GestionarSalas();
+            ventana.Owner = this;
+            ventana.Show();
+        }
+
+        private void gestionarSesionesButton_Click(object sender, RoutedEventArgs e)
+        {
+            GestionarSesiones ventana = new GestionarSesiones();
             ventana.Owner = this;
             ventana.Show();
         }

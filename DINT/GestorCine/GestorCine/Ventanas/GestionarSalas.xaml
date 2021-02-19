@@ -26,19 +26,11 @@
             <Setter Property="Orientation" Value="Vertical"></Setter>
             <Setter Property="HorizontalAlignment" Value="Center"></Setter>
         </Style>
-        
-        <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
-            <Setter Property="Margin" Value="0,0,0,10"></Setter>
-        </Style>
-        
+
         <Style TargetType="TextBlock">
             <Setter Property="FontSize" Value="40"></Setter>
             <Setter Property="HorizontalAlignment" Value="Center"></Setter>
             <Setter Property="Margin" Value="0,0,0,5"></Setter>
-        </Style>
-        
-        <Style TargetType="Border" x:Key="SeparadorBorder" BasedOn="{StaticResource {x:Type Border}}">
-            <Setter Property="BorderThickness" Value="0,5,0,0"></Setter>
         </Style>
 
         <Style TargetType="TextBlock" x:Key="estadoTextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
@@ -62,7 +54,7 @@
                     Height="250">
             <StackPanel Style="{StaticResource datosStackPanel}">
                 <TextBlock>Número de sala</TextBlock>
-                <Border Style="{StaticResource SeparadorBorder}">
+                <Border Style="{StaticResource separadorBorder}">
                     <TextBlock Text="{Binding Path=SalaSeleccionada.Numero}"></TextBlock>
                 </Border>
             </StackPanel>
@@ -74,7 +66,7 @@
                 <StackPanel Grid.Column="0" 
                             Style="{StaticResource datosStackPanel}">
                     <TextBlock>Capacidad</TextBlock>
-                    <Border Style="{StaticResource SeparadorBorder}">
+                    <Border Style="{StaticResource separadorBorder}">
                         <TextBlock Text="{Binding Path=SalaSeleccionada.Capacidad}"></TextBlock>
                     </Border>
                     
@@ -82,7 +74,7 @@
                 <StackPanel Grid.Column="1" 
                             Style="{StaticResource datosStackPanel}">
                     <TextBlock>Estado</TextBlock>
-                    <Border Style="{StaticResource SeparadorBorder}">
+                    <Border Style="{StaticResource separadorBorder}">
                         <TextBlock Style="{StaticResource estadoTextBlock}"></TextBlock>
                     </Border>
                 </StackPanel>
@@ -93,8 +85,9 @@
                     Orientation="Vertical"
                     Margin="10"
                     Width="200">
-            <Button Command="commands:CustomCommands.AgregarSala">Agregar sala</Button>
-            <Button>Modificar sala</Button>
+            <Button Command="commands:CustomCommands.AgregarSala"
+                    Style="{StaticResource stackedButton}">Agregar sala</Button>
+            <Button Style="{StaticResource stackedButton}">Modificar sala</Button>
         </StackPanel>
 
         <Border BorderThickness="2px"

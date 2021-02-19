@@ -11,9 +11,17 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <!-- Cambiar el color de los bordes al de los botones de Material Design -->
+            <!-- Cambiar el color de los Border al de los Button de Material Design -->
             <Style TargetType="Border">
                 <Setter Property="BorderBrush" Value="{DynamicResource PrimaryHueMidBrush}"></Setter>
+            </Style>
+            <!-- Tipo de Border basado en el anterior -->
+            <Style TargetType="Border" x:Key="separadorBorder" BasedOn="{StaticResource {x:Type Border}}">
+                <Setter Property="BorderThickness" Value="0,5,0,0"></Setter>
+            </Style>
+            <!-- Añadir un ligero margen a los botones de "Agregar/Modificar/Eliminar" que se agrupan en StackPanel -->
+            <Style TargetType="Button" x:Key="stackedButton" BasedOn="{StaticResource MaterialDesignRaisedButton}">
+                <Setter Property="Margin" Value="0,0,0,10"></Setter>
             </Style>
         </ResourceDictionary>
     </Application.Resources>

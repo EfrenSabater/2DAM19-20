@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GestorCine.VM;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,14 +15,17 @@ using System.Windows.Shapes;
 
 namespace GestorCine.Ventanas
 {
-    /// <summary>
-    /// Lógica de interacción para GestionarSesiones.xaml
-    /// </summary>
+    
     public partial class GestionarSesiones : Window
     {
+
+        private GestionarSesionesVM _vm;
+
         public GestionarSesiones()
         {
+            _vm = new GestionarSesionesVM();
             InitializeComponent();
+            DataContext = _vm;
         }
     }
 }

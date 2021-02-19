@@ -24,3 +24,6 @@ D:\DAM20-21\DINT\ProyectoWPF2\2DAM19-20\DINT\GestorCine\GestorCine\obj\Debug\Ven
 D:\DAM20-21\DINT\ProyectoWPF2\2DAM19-20\DINT\GestorCine\GestorCine\obj\Debug\GestorCine.csproj.Fody.CopyLocal.cache
 D:\DAM20-21\DINT\ProyectoWPF2\2DAM19-20\DINT\GestorCine\GestorCine\obj\Debug\Ventanas\AgregarSala.g.cs
 D:\DAM20-21\DINT\ProyectoWPF2\2DAM19-20\DINT\GestorCine\GestorCine\obj\Debug\Ventanas\AgregarSala.baml
+D:\DAM20-21\DINT\ProyectoWPF2\2DAM19-20\DINT\GestorCine\GestorCine\obj\Debug\GestorCine.csprojAssemblyReference.cache
+D:\DAM20-21\DINT\ProyectoWPF2\2DAM19-20\DINT\GestorCine\GestorCine\obj\Debug\Ventanas\GestionarSesiones.g.cs
+D:\DAM20-21\DINT\ProyectoWPF2\2DAM19-20\DINT\GestorCine\GestorCine\obj\Debug\Ventanas\GestionarSesiones.baml

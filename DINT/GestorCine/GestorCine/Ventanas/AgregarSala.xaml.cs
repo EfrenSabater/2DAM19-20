@@ -21,5 +21,15 @@ namespace GestorCine.Ventanas
         {
             InitializeComponent();
         }
+
+        private void CommandBinding_Executed_AgregarSala(object sender, ExecutedRoutedEventArgs e)
+        {
+            
+        }
+
+        private void CommandBinding_CanExecute_AgregarSala(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = false;
+        }
     }
 }

@@ -7,7 +7,7 @@
         xmlns:commands="clr-namespace:GestorCine.Comandos"
         mc:Ignorable="d"
         Title="AgregarSala" 
-        Height="250" 
+        Height="350" 
         Width="450"
         ShowInTaskbar="False"
         ResizeMode="NoResize">
@@ -22,6 +22,18 @@
             <Setter Property="HorizontalAlignment" Value="Center"></Setter>
             <Setter Property="Width" Value="150"></Setter>
         </Style>
+
+        <Style TargetType="TextBox" BasedOn="{StaticResource MaterialDesignTextBox}">
+            <Setter Property="Margin" Value="0,0,0,30"></Setter>
+        </Style>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="Margin" Value="0,0,0,5"></Setter>
+        </Style>
+
+        <Style TargetType="ComboBox" BasedOn="{StaticResource MaterialDesignComboBox}">
+            <Setter Property="Margin" Value="0,5,0,0"></Setter>
+        </Style>
     </Window.Resources>
     
     <DockPanel LastChildFill="False"
@@ -33,10 +45,10 @@
             <TextBlock>Capacidad de la sala</TextBlock>
             <TextBox></TextBox>
             <TextBlock>Disponibilidad</TextBlock>
-            <ListBox>
-                <ListBoxItem>Disponible</ListBoxItem>
-                <ListBoxItem>No disponible</ListBoxItem>
-            </ListBox>
+            <ComboBox>
+                <ComboBoxItem IsSelected="True">Disponible</ComboBoxItem>
+                <ComboBoxItem>No disponible</ComboBoxItem>
+            </ComboBox>
         </StackPanel>
         <Grid DockPanel.Dock="Bottom">
             <Grid.ColumnDefinitions>

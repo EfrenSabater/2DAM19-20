@@ -10,37 +10,71 @@
         MinWidth="900"
         Height="800" 
         Width="1200">
+    <Window.Resources>
+        <Style TargetType="StackPanel" x:Key="gridStackPanel">
+            <Setter Property="Orientation" Value="Vertical"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+        </Style>
+        
+        <Style TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+            <Setter Property="FontSize" Value="40"></Setter>
+            <Setter Property="Margin" Value="0,20,0,0"></Setter>
+        </Style>
+    </Window.Resources>
+    
     <DockPanel LastChildFill="True">
         <Grid DockPanel.Dock="Bottom"
               Margin="10"
-              Height="150">
+              Height="200">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0"
+                        Style="{StaticResource gridStackPanel}">
+                <TextBlock>Película</TextBlock>
+                <Border Style="{StaticResource separadorBorder}">
+                    <TextBlock>Título</TextBlock>
+                </Border>
+            </StackPanel>
+            <StackPanel Grid.Column="1"
+                        Style="{StaticResource gridStackPanel}">
+                <TextBlock>Sala</TextBlock>
+                <Border Style="{StaticResource separadorBorder}">
+                    <TextBlock Text="{Binding Path=SalaSeleccionada.Sala.Numero}"></TextBlock>
+                </Border>
+            </StackPanel>
+            <StackPanel Grid.Column="2"
+                        Style="{StaticResource gridStackPanel}">
+                <TextBlock>Hora</TextBlock>
+                <Border Style="{StaticResource separadorBorder}">
+                    <TextBlock Text="{Binding Path=SalaSeleccionada.Hora}"></TextBlock>
+                </Border>
+            </StackPanel>
         </Grid>
 
         <StackPanel DockPanel.Dock="Right"
                     Orientation="Vertical"
                     Margin="10"
                     Width="200">
-            <Button>Agregar sesión</Button>
-            <Button>Modificar sesión</Button>
-            <Button>Eliminar sesión</Button>
+            <Button Style="{StaticResource stackedButton}">Agregar sesión</Button>
+            <Button Style="{StaticResource stackedButton}">Modificar sesión</Button>
+            <Button Style="{StaticResource stackedButton}">Eliminar sesión</Button>
         </StackPanel>
 
         <Border BorderThickness="2px"
                 Margin="10">
             <ScrollViewer VerticalScrollBarVisibility="Auto"
                       HorizontalScrollBarVisibility="Auto">
-                <ListBox ItemsSource="{Binding Path=ListaSalas}"
-                     SelectedItem="{Binding Path=SalaSeleccionada}">
+                <ListBox ItemsSource="{Binding Path=ListaSesiones}"
+                     SelectedItem="{Binding Path=SesionSeleccionada}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock FontSize="30">
-                                <Run Text="Sala "></Run>
-                                <Run Text="{Binding Path=Numero}"></Run>
+                                <Run Text="Sesión de las "></Run>
+                                <Run Text="{Binding Path=Hora}"></Run>
                             </TextBlock>
                         </DataTemplate>
                     </ListBox.ItemTemplate>

@@ -18,7 +18,12 @@ namespace GestorCine.VM
         public Sesion SesionSeleccionada;
         public ServicioSesion _servicio;
 
-        public GestionarSesionesVM() { }
+        public GestionarSesionesVM() 
+        {
+            _servicio = new ServicioSesion();
+            NuevaSesion = new Sesion();
+            ListaSesiones = _servicio.ObetenerSesiones();
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
     }
