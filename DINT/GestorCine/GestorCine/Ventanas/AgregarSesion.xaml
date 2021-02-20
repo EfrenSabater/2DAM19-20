@@ -1,4 +1,4 @@
-﻿<Window x:Class="GestorCine.Ventanas.AgregarSala"
+﻿<Window x:Class="GestorCine.Ventanas.AgregarSesion"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:GestorCine.Ventanas"
         xmlns:commands="clr-namespace:GestorCine.Comandos"
         mc:Ignorable="d"
-        Title="AgregarSala" 
+        Title="AgregarSesion"
         Height="350" 
         Width="450"
         ShowInTaskbar="False"
@@ -35,20 +35,17 @@
             <Setter Property="Margin" Value="0,5,0,0"></Setter>
         </Style>
     </Window.Resources>
-    
+
     <DockPanel LastChildFill="False"
                Margin="10">
         <StackPanel DockPanel.Dock="Top"
                 Orientation="Vertical">
-            <TextBlock>Número de sala</TextBlock>
-            <TextBox Text="{Binding Path=NuevaSala.Numero}"></TextBox>
-            <TextBlock>Capacidad de la sala</TextBlock>
-            <TextBox Text="{Binding Path=NuevaSala.Capacidad}"></TextBox>
-            <TextBlock>Disponibilidad</TextBlock>
-            <ComboBox>
-                <ComboBoxItem IsSelected="{Binding Path=NuevaSala.Disponible}">Disponible</ComboBoxItem>
-                <ComboBoxItem>No disponible</ComboBoxItem>
-            </ComboBox>
+            <TextBlock>Título de la película:</TextBlock>
+            <TextBox Text="{Binding Path=NuevaSesion.Pelicula.Titulo}"></TextBox>
+            <TextBlock>Sala en la que se emite:</TextBlock>
+            <TextBox Text="{Binding Path=NuevaSesion.Sala.Numero}"></TextBox>
+            <TextBlock>Hora de emisión:</TextBlock>
+            <TextBox Text="{Binding Path=NuevaSesion.Hora}"></TextBox>
         </StackPanel>
         <Grid DockPanel.Dock="Bottom">
             <Grid.ColumnDefinitions>

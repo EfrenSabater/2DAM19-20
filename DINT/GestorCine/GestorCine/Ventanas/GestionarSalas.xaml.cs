@@ -26,19 +26,23 @@ namespace GestorCine
             DataContext = _vm;
         }
 
-        private void CommandBinding_Executed_AgregarSala(object sender, ExecutedRoutedEventArgs e)
+        private void CommandBinding_Executed_Agregar(object sender, ExecutedRoutedEventArgs e)
         {
             AgregarSala ventana = new AgregarSala();
             ventana.Owner = this;
-            ventana.ShowDialog();
+            
+            if (ventana.ShowDialog() == true)
+            {
+                _vm.RefreshLista();
+            }
         }
 
-        private void CommandBinding_Executed_ModificarSala(object sender, ExecutedRoutedEventArgs e)
+        private void CommandBinding_Executed_Modificar(object sender, ExecutedRoutedEventArgs e)
         {
             _vm.ModificarSala();
         }
 
-        private void CommandBinding_CanExecute_ModificarSala(object sender, CanExecuteRoutedEventArgs e)
+        private void CommandBinding_CanExecute_Modificar(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = _vm.HaySalaSeleccionada();
         }

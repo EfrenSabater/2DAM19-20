@@ -16,8 +16,7 @@ namespace GestorCine.Servicios
 
         public ServicioSala() 
         {
-            _conexion = new SqliteConnection("Data Source=salas.db");
-            CrearTabla();
+            _conexion = new SqliteConnection("Data Source=cinedatabase.db");
             InsertarDatos();
         }
 
@@ -49,23 +48,6 @@ namespace GestorCine.Servicios
             return salas;
         }
 
-        private void CrearTabla()
-        {
-            _conexion.Open();
-            _comando = _conexion.CreateCommand();
-            // Código de creación proporcionado por el proyecto
-            _comando.CommandText = @"DROP TABLE IF EXISTS salas;
-                                    CREATE TABLE salas (
-                                        idSala     INTEGER PRIMARY KEY AUTOINCREMENT,
-                                        numero     TEXT,
-                                        capacidad  INTEGER,
-                                        disponible BOOLEAN DEFAULT (true) 
-                                    );";
-            _comando.ExecuteNonQuery();
-
-            _conexion.Close();
-        }
-
         private void InsertarDatos()
         {
             _conexion.Open();
@@ -88,7 +70,7 @@ namespace GestorCine.Servicios
             _conexion.Open();
             _comando = _conexion.CreateCommand();
 
-            _comando.CommandText = "INSERT INTO salas (numero, capacidad, disponible) VALUES (@numero, @capacidad, @disponible)";
+            _comando.CommandText = "INSERT INTO salas (numero, capacidad, disponible) VALUES (@numero , @capacidad , @disponible)";
             _comando.Parameters.Add("@numero", SqliteType.Text);
             _comando.Parameters.Add("@capacidad", SqliteType.Integer);
             _comando.Parameters.Add("@disponible", SqliteType.Integer);

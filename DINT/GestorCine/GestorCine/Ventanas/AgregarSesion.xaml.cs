@@ -15,27 +15,26 @@ using System.Windows.Shapes;
 
 namespace GestorCine.Ventanas
 {
-    
-    public partial class AgregarSala : Window
+    public partial class AgregarSesion : Window
     {
-        private AgregarSalaVM _vm;
+        private AgregarSesionVM _vm;
 
-        public AgregarSala()
+        public AgregarSesion()
         {
-            _vm = new AgregarSalaVM();
+            _vm = new AgregarSesionVM();
             InitializeComponent();
             DataContext = _vm;
         }
 
         private void CommandBinding_Executed_Agregar(object sender, ExecutedRoutedEventArgs e)
         {
-            _vm.AgregarSala();
+            _vm.AgregarSesion();
             DialogResult = true;
         }
 
         private void CommandBinding_CanExecute_Agregar(object sender, CanExecuteRoutedEventArgs e)
         {
-            e.CanExecute = _vm.SalaValida();
+            e.CanExecute = _vm.SesionValida();
         }
 
         private void cancelarButton_Click(object sender, RoutedEventArgs e)

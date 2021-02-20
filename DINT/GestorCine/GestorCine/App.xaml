@@ -23,6 +23,12 @@
             <Style TargetType="Button" x:Key="stackedButton" BasedOn="{StaticResource MaterialDesignRaisedButton}">
                 <Setter Property="Margin" Value="0,0,0,10"></Setter>
             </Style>
+            <!-- Botones de guardar/cancelar en las modificaciones de salas/sesiones -->
+            <Style TargetType="Button" x:Key="guardarCancelarButton" BasedOn="{StaticResource MaterialDesignRaisedLightButton}">
+                <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                <Setter Property="Width" Value="90"></Setter>
+                <Setter Property="Margin" Value="0,40,0,0"></Setter>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

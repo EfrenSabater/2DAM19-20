@@ -9,7 +9,7 @@ namespace GestorCine.POJO
 {
     class Sesion : INotifyPropertyChanged
     {
-        //private int IdSesion;
+        public int IdSesion { get; set; }
         public Pelicula Pelicula { get; set; }
         public Sala Sala { get; set; }
         public string Hora { get; set; }
@@ -21,6 +21,22 @@ namespace GestorCine.POJO
             Pelicula = pelicula;
             Sala = sala;
             Hora = hora;
+        }
+
+        public Sesion(int idSesion, Pelicula pelicula, Sala sala, string hora)
+        {
+            IdSesion = idSesion;
+            Pelicula = pelicula;
+            Sala = sala;
+            Hora = hora;
+        }
+
+        public Sesion(Sesion sesion)
+        {
+            IdSesion = sesion.IdSesion;
+            Pelicula = sesion.Pelicula;
+            Sala = sesion.Sala;
+            Hora = sesion.Hora;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

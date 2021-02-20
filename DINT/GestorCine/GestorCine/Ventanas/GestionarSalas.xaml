@@ -12,13 +12,13 @@
         Height="800" 
         Width="1200">
     <Window.CommandBindings>
-        <CommandBinding Command="commands:CustomCommands.AgregarSala"
-                        Executed="CommandBinding_Executed_AgregarSala">
+        <CommandBinding Command="commands:CustomCommands.Agregar"
+                        Executed="CommandBinding_Executed_Agregar">
         </CommandBinding>
         
-        <CommandBinding Command="commands:CustomCommands.ModificarSala"
-                        Executed="CommandBinding_Executed_ModificarSala"
-                        CanExecute="CommandBinding_CanExecute_ModificarSala">
+        <CommandBinding Command="commands:CustomCommands.Modificar"
+                        Executed="CommandBinding_Executed_Modificar"
+                        CanExecute="CommandBinding_CanExecute_Modificar">
         </CommandBinding>
     </Window.CommandBindings>
     <Window.Resources>
@@ -48,12 +48,6 @@
 
         <Style TargetType="TextBlock" x:Key="modificarTextBlock">
             <Setter Property="FontSize" Value="10"></Setter>
-        </Style>
-
-        <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedLightButton}">
-            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
-            <Setter Property="Width" Value="90"></Setter>
-            <Setter Property="Margin" Value="0,40,0,0"></Setter>
         </Style>
 
         <Style TargetType="StackPanel" x:Key="hiddenStackPanel">
@@ -113,9 +107,9 @@
                     Orientation="Vertical"
                     Margin="10"
                     Width="200">
-            <Button Command="commands:CustomCommands.AgregarSala"
+            <Button Command="commands:CustomCommands.Agregar"
                     Style="{StaticResource stackedButton}">Agregar sala</Button>
-            <Button Command="commands:CustomCommands.ModificarSala"
+            <Button Command="commands:CustomCommands.Modificar"
                     Style="{StaticResource stackedButton}">Modificar sala</Button>
             <StackPanel Style="{StaticResource hiddenStackPanel}">
                 <TextBlock Style="{StaticResource modificarTextBlock}">Modificando la sala:</TextBlock>
@@ -134,9 +128,11 @@
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Button Grid.Column="0"
+                            Style="{StaticResource guardarCancelarButton}"
                             x:Name="guardarCambiosButton"
                             Click="guardarCambiosButton_Click">Guardar</Button>
                     <Button Grid.Column="1"
+                            Style="{StaticResource guardarCancelarButton}"
                             x:Name="cancelarCambiosButton"
                             Click="cancelarCambiosButton_Click">Cancelar</Button>
                 </Grid>

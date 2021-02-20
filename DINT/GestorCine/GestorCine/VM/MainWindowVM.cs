@@ -12,13 +12,12 @@ namespace GestorCine.VM
 {
     class MainWindowVM : INotifyPropertyChanged
     {
-        public ObservableCollection<Pelicula> peliculas;
-        private ServicioApiRest _servicioApi;
+        private ServicioPelicula _servicio;
 
+        // MainWindow sólo se encarga de crear cinedatabase.db gracias a ServicioPelicula, que llama a ServicioApiRest
         public MainWindowVM() 
         {
-            _servicioApi = new ServicioApiRest();
-            peliculas = _servicioApi.ObtenerPeliculas();
+            _servicio = new ServicioPelicula();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -22,7 +22,45 @@ namespace GestorCine.VM
         {
             _servicio = new ServicioSesion();
             NuevaSesion = new Sesion();
-            ListaSesiones = _servicio.ObetenerSesiones();
+            ListaSesiones = _servicio.ObtenerSesiones();
+        }
+
+        // Click en Modificar Sesion
+        public void ModificarSesion()
+        {
+            NuevaSesion = new Sesion(SesionSeleccionada);
+        }
+
+        // Click en Eliminar Sesion
+        public void EliminarSesion()
+        {
+            _servicio.EliminarSesion(SesionSeleccionada);
+            NuevaSesion = null;
+            RefreshLista();
+        }
+
+        // Click en Guardar
+        public void GuardarCambios()
+        {
+            _servicio.ActualizarSesion(NuevaSesion);
+            NuevaSesion = null;
+            RefreshLista();
+        }
+
+        // Click en Cancelar
+        public void CancelarCambios()
+        {
+            NuevaSesion = null;
+        }
+
+        public void RefreshLista()
+        {
+            ListaSesiones = _servicio.ObtenerSesiones();
+        }
+
+        public bool HaySesionSeleccionada()
+        {
+            return SesionSeleccionada != null;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

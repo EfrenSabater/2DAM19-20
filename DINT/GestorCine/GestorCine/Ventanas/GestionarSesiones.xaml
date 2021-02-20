@@ -4,12 +4,28 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GestorCine.Ventanas"
+        xmlns:commands="clr-namespace:GestorCine.Comandos"
         mc:Ignorable="d"
         Title="GestionarSesiones" 
         MinHeight="650"
         MinWidth="900"
         Height="800" 
         Width="1200">
+    <Window.CommandBindings>
+        <CommandBinding Command="commands:CustomCommands.Agregar"
+                        Executed="CommandBinding_Executed_Agregar">
+        </CommandBinding>
+
+        <CommandBinding Command="commands:CustomCommands.Modificar"
+                        Executed="CommandBinding_Executed_Modificar"
+                        CanExecute="CommandBinding_CanExecute_Modificar">
+        </CommandBinding>
+
+        <CommandBinding Command="commands:CustomCommands.Eliminar"
+                        Executed="CommandBinding_Executed_Eliminar"
+                        CanExecute="CommandBinding_CanExecute_Eliminar">
+        </CommandBinding>
+    </Window.CommandBindings>
     <Window.Resources>
         <Style TargetType="StackPanel" x:Key="gridStackPanel">
             <Setter Property="Orientation" Value="Vertical"></Setter>
@@ -20,6 +36,20 @@
             <Setter Property="HorizontalAlignment" Value="Center"></Setter>
             <Setter Property="FontSize" Value="40"></Setter>
             <Setter Property="Margin" Value="0,20,0,0"></Setter>
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="modificarTextBlock">
+            <Setter Property="FontSize" Value="10"></Setter>
+        </Style>
+
+        <Style TargetType="StackPanel" x:Key="hiddenStackPanel">
+            <Setter Property="Orientation" Value="Vertical"></Setter>
+            <Setter Property="Margin" Value="0,30,0,0"></Setter>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Path=NuevaSesion}" Value="{x:Null}">
+                    <Setter Property="Visibility" Value="Hidden"></Setter>
+                </DataTrigger>
+            </Style.Triggers>
         </Style>
     </Window.Resources>
     
@@ -36,7 +66,7 @@
                         Style="{StaticResource gridStackPanel}">
                 <TextBlock>Película</TextBlock>
                 <Border Style="{StaticResource separadorBorder}">
-                    <TextBlock>Título</TextBlock>
+                    <TextBlock Text="{Binding Path=SalaSeleccionada.Pelicula.Titulo}"></TextBlock>
                 </Border>
             </StackPanel>
             <StackPanel Grid.Column="1"
@@ -62,6 +92,31 @@
             <Button Style="{StaticResource stackedButton}">Agregar sesión</Button>
             <Button Style="{StaticResource stackedButton}">Modificar sesión</Button>
             <Button Style="{StaticResource stackedButton}">Eliminar sesión</Button>
+            <StackPanel Style="{StaticResource hiddenStackPanel}">
+                <TextBlock FontSize="20"
+                           HorizontalAlignment="Center"
+                           Margin="0,0,0,20">Modificando sesión</TextBlock>
+                <TextBlock Style="{StaticResource modificarTextBlock}">Película a emitir:</TextBlock>
+                <TextBox Text="{Binding Path=NuevaSesion.Pelicula.Titulo}"></TextBox>
+                <TextBlock Style="{StaticResource modificarTextBlock}">Sala en la que se emite:</TextBlock>
+                <TextBox Text="{Binding Path=NuevaSesion.Sala.Numero}"></TextBox>
+                <TextBlock Style="{StaticResource modificarTextBlock}">Hora de emisión:</TextBlock>
+                <TextBox Text="{Binding Path=NuevaSesion.Hora}"></TextBox>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0"
+                            Style="{StaticResource guardarCancelarButton}"
+                            x:Name="guardarCambiosButton"
+                            Click="guardarCambiosButton_Click">Guardar</Button>
+                    <Button Grid.Column="1"
+                            Style="{StaticResource guardarCancelarButton}"
+                            x:Name="cancelarCambiosButton"
+                            Click="cancelarCambiosButton_Click">Cancelar</Button>
+                </Grid>
+            </StackPanel>
         </StackPanel>
 
         <Border BorderThickness="2px"

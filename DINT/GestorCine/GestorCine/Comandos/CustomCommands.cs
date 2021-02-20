@@ -9,10 +9,13 @@ namespace GestorCine.Comandos
 {
     public static class CustomCommands
     {
-        public static readonly RoutedUICommand AgregarSala = new RoutedUICommand(
-            "AgregarSala", "AgregarSala", typeof(CustomCommands));
+        public static readonly RoutedUICommand Agregar = new RoutedUICommand(
+            "Agregar", "Agregar", typeof(CustomCommands));
 
-        public static readonly RoutedUICommand ModificarSala = new RoutedUICommand(
-            "ModificarSala", "ModificarSala", typeof(CustomCommands));
+        public static readonly RoutedUICommand Modificar = new RoutedUICommand(
+            "Modificar", "Modificar", typeof(CustomCommands));
+
+        public static readonly RoutedUICommand Eliminar = new RoutedUICommand(
+            "Eliminar", "Eliminar", typeof(CustomCommands));
     }
 }

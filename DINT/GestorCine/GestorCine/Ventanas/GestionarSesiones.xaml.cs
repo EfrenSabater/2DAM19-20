@@ -27,5 +27,47 @@ namespace GestorCine.Ventanas
             InitializeComponent();
             DataContext = _vm;
         }
+
+        private void CommandBinding_Executed_Agregar(object sender, ExecutedRoutedEventArgs e)
+        {
+            /*
+            AgregarSala ventana = new AgregarSala();
+            ventana.Owner = this;
+
+            if (ventana.ShowDialog() == true)
+            {
+                _vm.RefreshLista();
+            }*/
+        }
+
+        private void CommandBinding_Executed_Modificar(object sender, ExecutedRoutedEventArgs e)
+        {
+            _vm.ModificarSesion();
+        }
+
+        private void CommandBinding_CanExecute_Modificar(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = _vm.HaySesionSeleccionada();
+        }
+
+        private void CommandBinding_Executed_Eliminar(object sender, ExecutedRoutedEventArgs e)
+        {
+            _vm.EliminarSesion();
+        }
+
+        private void CommandBinding_CanExecute_Eliminar(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = _vm.HaySesionSeleccionada();
+        }
+
+        private void guardarCambiosButton_Click(object sender, RoutedEventArgs e)
+        {
+            _vm.GuardarCambios();
+        }
+
+        private void cancelarCambiosButton_Click(object sender, RoutedEventArgs e)
+        {
+            _vm.CancelarCambios();
+        }
     }
 }

@@ -22,7 +22,7 @@ namespace GestorCine.VM
 
         public bool SalaValida()
         {
-            return NuevaSala.Capacidad > 3;
+            return (NuevaSala.Numero != "" && NuevaSala.Capacidad > 0);
         }
 
         public void AgregarSala()

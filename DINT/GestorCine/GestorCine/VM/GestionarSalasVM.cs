@@ -21,7 +21,7 @@ namespace GestorCine.VM
         public GestionarSalasVM()
         {
             _servicio = new ServicioSala();
-            ListaSalas = _servicio.ObtenerSalas();
+            RefreshLista();
         }
 
         public bool HaySalaSeleccionada()
@@ -29,21 +29,29 @@ namespace GestorCine.VM
             return SalaSeleccionada != null;
         }
 
+        // Click en Modificar Sala
         public void ModificarSala()
         {
             NuevaSala = new Sala(SalaSeleccionada);
         }
 
+        // Click en Guardar
         public void GuardarCambios()
         {
             _servicio.ActualizarSala(NuevaSala);
             NuevaSala = null;
-            ListaSalas = _servicio.ObtenerSalas();
+            RefreshLista();
         }
 
+        // Click en Cancelar
         public void CancelarCambios()
         {
             NuevaSala = null;
+        }
+
+        public void RefreshLista()
+        {
+            ListaSalas = _servicio.ObtenerSalas();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

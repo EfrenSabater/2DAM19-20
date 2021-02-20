@@ -21,7 +21,7 @@ namespace GestorCine.POJO
             NRM_18, APTA_TP
         }
 
-        // private int IdPelicula;
+        public int IdPelicula { get; set; }
         public string Titulo { get; set; }
         public string Cartel { get; set; }
         public int Anyo { get; set; }
