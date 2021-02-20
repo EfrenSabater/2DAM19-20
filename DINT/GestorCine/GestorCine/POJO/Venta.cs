@@ -14,7 +14,7 @@ namespace GestorCine.POJO
             Efectivo, Tarjeta, Bizum
         }
 
-        //private int IdVenta;
+        public int IdVenta { get; set; }
         public Sesion Sesion { get; set; }
         public int Cantidad { get; set; }
         public MediosPago Pago { get; set; }
@@ -23,6 +23,14 @@ namespace GestorCine.POJO
 
         public Venta(Sesion sesion, int cantidad, MediosPago pago)
         {
+            Sesion = sesion;
+            Cantidad = cantidad;
+            Pago = pago;
+        }
+
+        public Venta(int idVenta, Sesion sesion, int cantidad, MediosPago pago)
+        {
+            IdVenta = IdVenta;
             Sesion = sesion;
             Cantidad = cantidad;
             Pago = pago;

@@ -49,3 +49,5 @@ D:\DAM20-21\DINT\ProyectoWPF2\2DAM19-20\DINT\GestorCine\GestorCine\bin\Debug\Sys
 D:\DAM20-21\DINT\ProyectoWPF2\2DAM19-20\DINT\GestorCine\GestorCine\bin\Debug\System.Numerics.Vectors.xml
 D:\DAM20-21\DINT\ProyectoWPF2\2DAM19-20\DINT\GestorCine\GestorCine\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 D:\DAM20-21\DINT\ProyectoWPF2\2DAM19-20\DINT\GestorCine\GestorCine\obj\Debug\GestorCine_Content.g.cs
+D:\DAM20-21\DINT\ProyectoWPF2\2DAM19-20\DINT\GestorCine\GestorCine\obj\Debug\Ventanas\AgregarSesion.g.cs
+D:\DAM20-21\DINT\ProyectoWPF2\2DAM19-20\DINT\GestorCine\GestorCine\obj\Debug\Ventanas\AgregarSesion.baml

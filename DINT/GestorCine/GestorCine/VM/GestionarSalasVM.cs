@@ -16,11 +16,11 @@ namespace GestorCine.VM
         public ObservableCollection<Sala> ListaSalas { get; set; }
         public Sala NuevaSala { get; set; }
         public Sala SalaSeleccionada { get; set; }
-        private ServicioSala _servicio;
+        private ServicioBD _servicio;
 
         public GestionarSalasVM()
         {
-            _servicio = new ServicioSala();
+            _servicio = new ServicioBD();
             RefreshLista();
         }
 

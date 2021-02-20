@@ -12,11 +12,11 @@ namespace GestorCine.VM
     class AgregarSesionVM : INotifyPropertyChanged
     {
         public Sesion NuevaSesion { get; set; }
-        private ServicioSesion _servicio;
+        private ServicioBD _servicio;
 
         public AgregarSesionVM()
         {
-            _servicio = new ServicioSesion();
+            _servicio = new ServicioBD();
             NuevaSesion = new Sesion();
         }
 

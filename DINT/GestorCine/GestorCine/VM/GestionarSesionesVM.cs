@@ -16,11 +16,11 @@ namespace GestorCine.VM
         public ObservableCollection<Sesion> ListaSesiones { get; set; }
         public Sesion NuevaSesion;
         public Sesion SesionSeleccionada;
-        private ServicioSesion _servicio;
+        private ServicioBD _servicio;
 
         public GestionarSesionesVM() 
         {
-            _servicio = new ServicioSesion();
+            _servicio = new ServicioBD();
             NuevaSesion = new Sesion();
             ListaSesiones = _servicio.ObtenerSesiones();
         }

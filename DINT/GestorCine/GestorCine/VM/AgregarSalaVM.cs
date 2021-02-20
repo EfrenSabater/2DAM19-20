@@ -12,11 +12,11 @@ namespace GestorCine.VM
     class AgregarSalaVM : INotifyPropertyChanged
     {
         public Sala NuevaSala { get; set; }
-        private ServicioSala _servicio;
+        private ServicioBD _servicio;
 
         public AgregarSalaVM()
         {
-            _servicio = new ServicioSala();
+            _servicio = new ServicioBD();
             NuevaSala = new Sala();
         }
 

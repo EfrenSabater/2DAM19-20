@@ -1,4 +1,5 @@
 ﻿using GestorCine.Ventanas;
+using GestorCine.VM;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,8 +22,11 @@ namespace GestorCine
     /// </summary>
     public partial class MainWindow : Window
     {
+        private MainWindowVM _vm;
+
         public MainWindow()
         {
+            _vm = new MainWindowVM();
             InitializeComponent();
         }
 
