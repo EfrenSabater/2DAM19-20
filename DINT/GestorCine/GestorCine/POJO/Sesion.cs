@@ -14,7 +14,11 @@ namespace GestorCine.POJO
         public Sala Sala { get; set; }
         public string Hora { get; set; }
 
-        public Sesion() { }
+        public Sesion() 
+        {
+            Pelicula = new Pelicula();
+            Sala = new Sala();
+        }
 
         public Sesion(Pelicula pelicula, Sala sala, string hora)
         {

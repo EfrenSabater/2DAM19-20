@@ -5,5 +5,8 @@
     <Setting Name="apiDireccion" Type="System.String" Scope="Application">
       <Value Profile="(Default)">https://dint2021.azurewebsites.net/api/peliculas</Value>
     </Setting>
+    <Setting Name="ultimaConexion" Type="System.DateTime" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -22,10 +22,10 @@ namespace GestorCine.POJO
             NRM_18, APTA_TP
         }*/
 
-        public int IdPelicula { get; set; }
+        public int Id { get; set; }
         public string Titulo { get; set; }
         public string Cartel { get; set; }
-        public int Anyo { get; set; }
+        public int Año { get; set; }
         public string Genero { get; set; }
         public string Calificacion { get; set; }
 
@@ -33,10 +33,10 @@ namespace GestorCine.POJO
 
         public Pelicula(int idPelicula, string titulo, string cartel, int anyo, string genero, string calificacion)
         {
-            IdPelicula = idPelicula;
+            Id = idPelicula;
             Titulo = titulo;
             Cartel = cartel;
-            Anyo = anyo;
+            Año = anyo;
             Genero = genero;
             Calificacion = calificacion;
         }

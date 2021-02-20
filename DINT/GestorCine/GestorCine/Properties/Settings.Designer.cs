@@ -31,5 +31,16 @@ namespace GestorCine.Properties {
                 return ((string)(this["apiDireccion"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.DateTime ultimaConexion {
+            get {
+                return ((global::System.DateTime)(this["ultimaConexion"]));
+            }
+            set {
+                this["ultimaConexion"] = value;
+            }
+        }
     }
 }

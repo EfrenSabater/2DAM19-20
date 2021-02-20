@@ -30,14 +30,13 @@ namespace GestorCine.Ventanas
 
         private void CommandBinding_Executed_Agregar(object sender, ExecutedRoutedEventArgs e)
         {
-            /*
-            AgregarSala ventana = new AgregarSala();
+            AgregarSesion ventana = new AgregarSesion();
             ventana.Owner = this;
 
             if (ventana.ShowDialog() == true)
             {
                 _vm.RefreshLista();
-            }*/
+            }
         }
 
         private void CommandBinding_Executed_Modificar(object sender, ExecutedRoutedEventArgs e)
