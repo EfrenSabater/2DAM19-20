@@ -28,7 +28,7 @@
         <Button x:Name="gestionarSalasButton" Click="gestionarSalasButton_Click">Gestionar salas</Button>
         <Button>Consultar salas</Button>
         <Button x:Name="gestionarSesionesButton" Click="gestionarSesionesButton_Click">Gestionar sesiones</Button>
-        <Button>Venta de entradas</Button>
+        <Button x:Name="gestionarVentasButton" Click="gestionarVentasButton_Click">Venta de entradas</Button>
         
         
     </StackPanel>

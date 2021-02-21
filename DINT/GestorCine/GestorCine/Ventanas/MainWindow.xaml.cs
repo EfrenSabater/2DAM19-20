@@ -43,5 +43,12 @@ namespace GestorCine
             ventana.Owner = this;
             ventana.Show();
         }
+
+        private void gestionarVentasButton_Click(object sender, RoutedEventArgs e)
+        {
+            GestionarVentas ventana = new GestionarVentas();
+            ventana.Owner = this;
+            ventana.Show();
+        }
     }
 }

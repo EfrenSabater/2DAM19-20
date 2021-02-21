@@ -41,9 +41,27 @@
         <StackPanel DockPanel.Dock="Top"
                 Orientation="Vertical">
             <TextBlock>Título de la película:</TextBlock>
-            <TextBox Text="{Binding Path=NuevaSesion.Pelicula.Titulo}"></TextBox>
+            <ComboBox ItemsSource="{Binding Path=ListaPeliculas}"
+                      SelectedItem="{Binding Path=NuevaSesion.Pelicula}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock>
+                            <Run Text="{Binding Path=Titulo}"></Run>
+                        </TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
             <TextBlock>Sala en la que se emite:</TextBlock>
-            <TextBox Text="{Binding Path=NuevaSesion.Sala.Numero}"></TextBox>
+            <ComboBox ItemsSource="{Binding Path=ListaSalas}"
+                      SelectedItem="{Binding Path=NuevaSesion.Sala}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock>
+                            <Run Text="{Binding Path=Numero}"></Run>
+                        </TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
             <TextBlock>Hora de emisión:</TextBlock>
             <TextBox Text="{Binding Path=NuevaSesion.Hora}"></TextBox>
         </StackPanel>

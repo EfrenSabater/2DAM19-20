@@ -21,6 +21,7 @@ namespace GestorCine.Servicios
             _conexion = new SqliteConnection("Data Source=cinedatabase.db");
             if (Properties.Settings.Default.ultimaConexion.Day != DateTime.Now.Day || Properties.Settings.Default.ultimaConexion == null)
             {
+                VaciarVentas();
                 RellenarPeliculas();
                 Properties.Settings.Default.ultimaConexion = DateTime.Now;
             }
@@ -34,8 +35,7 @@ namespace GestorCine.Servicios
             _conexion.Open();
             _comando = _conexion.CreateCommand();
             // Código de creación proporcionado por el proyecto
-            _comando.CommandText = @"DROP TABLE IF EXISTS ventas;
-                                     DROP TABLE IF EXISTS sesiones;
+            _comando.CommandText = @"DROP TABLE IF EXISTS sesiones;
                                      DROP TABLE IF EXISTS salas;
                                     CREATE TABLE salas (
                                         idSala     INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -49,7 +49,7 @@ namespace GestorCine.Servicios
                                         sala     INTEGER REFERENCES salas (idSala),
                                         hora     TEXT
                                     );
-                                    CREATE TABLE ventas (
+                                    CREATE TABLE IF NOT EXISTS ventas (
                                         idVenta  INTEGER PRIMARY KEY AUTOINCREMENT,
                                         sesion   INTEGER REFERENCES sesiones (idSesion),
                                         cantidad INTEGER,
@@ -268,10 +268,50 @@ namespace GestorCine.Servicios
             return sesiones;
         }
 
+        // NO FUNCIONA POR ALGÚN MOTIVO
+        /*public ObservableCollection<Sesion> ObtenerSesionesOrderBy(bool order)
+        {
+            ObservableCollection<Sesion> sesiones = new ObservableCollection<Sesion>();
+
+            _conexion.Open();
+            _comando = _conexion.CreateCommand();
+
+            _comando.CommandText = "SELECT * FROM sesiones ORDER BY @order DESC";
+            _comando.Parameters.Add("@order", SqliteType.Text);
+            if (order)
+            {
+                _comando.Parameters["@order"].Value = "pelicula";
+            }
+            else
+            {
+                _comando.Parameters["@order"].Value = "hora";
+            }
+            SqliteDataReader lector = _comando.ExecuteReader();
+
+            if (lector.HasRows)
+            {
+                while (lector.Read())
+                {
+                    int idSesion = lector.GetInt32(0);
+                    int idPelicula = lector.GetInt32(1);
+                    int idSala = lector.GetInt32(2);
+                    string hora = lector.GetString(3);
+                    Pelicula p = EncontrarPelicula(idPelicula);
+                    Sala s = EncontrarSala(idSala);
+                    sesiones.Add(new Sesion(idSesion, p, s, hora));
+                }
+            }
+
+            lector.Close();
+            _conexion.Close();
+            return sesiones;
+        }*/
+
         public void InsertarSesion(Sesion sesion)
         {
             _conexion.Open();
             _comando = _conexion.CreateCommand();
+
             try
             {
                 _comando.CommandText = "INSERT INTO sesiones (pelicula, sala, hora) VALUES (@pelicula , @sala , @hora)";
@@ -412,5 +452,50 @@ namespace GestorCine.Servicios
             }
         }
 
+        /* ****************************** */
+        /*  MÉTODOS PARA LA TABLA ventas  */
+        /* ****************************** */
+        public void VaciarVentas()
+        {
+            _conexion.Open();
+            _comando = _conexion.CreateCommand();
+
+            _comando.CommandText = @"DROP TABLE IF EXISTS ventas;
+                                     CREATE TABLE ventas (
+                                        idVenta  INTEGER PRIMARY KEY AUTOINCREMENT,
+                                        sesion   INTEGER REFERENCES sesiones (idSesion),
+                                        cantidad INTEGER,
+                                        pago     TEXT
+                                    );";
+            _comando.ExecuteNonQuery();
+
+            _conexion.Close();
+        }
+
+        public void InsertarVenta(Venta venta)
+        {
+            _conexion.Open();
+            _comando = _conexion.CreateCommand();
+
+            try
+            {
+                _comando.CommandText = "INSERT INTO ventas (sesion, cantidad, pago) VALUES (@sesion , @cantidad , @pago)";
+                _comando.Parameters.Add("@sesion", SqliteType.Integer);
+                _comando.Parameters.Add("@cantidad", SqliteType.Integer);
+                _comando.Parameters.Add("@pago", SqliteType.Text);
+                _comando.Parameters["@sesion"].Value = venta.Sesion.IdSesion;
+                _comando.Parameters["@cantidad"].Value = venta.Cantidad;
+                _comando.Parameters["@pago"].Value = venta.Pago.ToString();
+                _comando.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Se ha intentado insertar un valor inválido en sesiones");
+            }
+            finally
+            {
+                _conexion.Close();
+            }
+        }
     }
 }
