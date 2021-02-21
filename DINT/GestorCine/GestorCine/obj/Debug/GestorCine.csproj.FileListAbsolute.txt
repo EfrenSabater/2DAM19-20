@@ -55,3 +55,7 @@ D:\DAM20-21\DINT\ProyectoWPF2\2DAM19-20\DINT\GestorCine\GestorCine\obj\Debug\Ven
 D:\DAM20-21\DINT\ProyectoWPF2\2DAM19-20\DINT\GestorCine\GestorCine\obj\Debug\Ventanas\GestionarVentas.baml
 D:\DAM20-21\DINT\ProyectoWPF2\2DAM19-20\DINT\GestorCine\GestorCine\obj\Debug\Ventanas\ConsultarOcupacion.g.cs
 D:\DAM20-21\DINT\ProyectoWPF2\2DAM19-20\DINT\GestorCine\GestorCine\obj\Debug\Ventanas\ConsultarOcupacion.baml
+D:\DAM20-21\DINT\ProyectoWPF2\2DAM19-20\DINT\GestorCine\GestorCine\bin\Debug\GestorCine.exe.manifest
+D:\DAM20-21\DINT\ProyectoWPF2\2DAM19-20\DINT\GestorCine\GestorCine\bin\Debug\GestorCine.application
+D:\DAM20-21\DINT\ProyectoWPF2\2DAM19-20\DINT\GestorCine\GestorCine\obj\Debug\GestorCine.exe.manifest
+D:\DAM20-21\DINT\ProyectoWPF2\2DAM19-20\DINT\GestorCine\GestorCine\obj\Debug\GestorCine.application
