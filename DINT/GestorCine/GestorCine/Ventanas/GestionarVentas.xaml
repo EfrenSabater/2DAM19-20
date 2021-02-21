@@ -7,10 +7,10 @@
         xmlns:commands="clr-namespace:GestorCine.Comandos"
         mc:Ignorable="d"
         Title="GestionarVentas"
-        MinHeight="450"
-        MinWidth="600"
-        Height="600" 
-        Width="900">
+        MinHeight="800"
+        MinWidth="1000"
+        Height="800" 
+        Width="1000">
     <Window.CommandBindings>
         <CommandBinding Command="commands:CustomCommands.Agregar"
                         Executed="CommandBinding_Executed_Agregar"
@@ -51,6 +51,11 @@
         <StackPanel Grid.Row="0">
             <DockPanel LastChildFill="False">
                 <TextBlock DockPanel.Dock="Left">Sesión: </TextBlock>
+                <Button DockPanel.Dock="Right"
+                        Width="200"
+                        FontSize="20"
+                        x:Name="consultarSalasButton"
+                        Click="consultarSalasButton_Click">Consultar salas</Button>
                 <!-- Se eliminan hasta que funcione el método de ordenación de ServicioBD
                     <Button DockPanel.Dock="Right"
                         Width="100"

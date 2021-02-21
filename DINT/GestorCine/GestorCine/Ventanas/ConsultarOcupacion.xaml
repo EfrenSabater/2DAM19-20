@@ -1,0 +1,91 @@
+﻿<Window x:Class="GestorCine.Ventanas.ConsultarOcupacion"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GestorCine.Ventanas"
+        xmlns:commands="clr-namespace:GestorCine.Comandos"
+        mc:Ignorable="d"
+        Title="ConsultarOcupacion"
+        MinHeight="650"
+        MinWidth="900"
+        Height="800" 
+        Width="1200">
+    <Window.CommandBindings>
+        <CommandBinding Command="commands:CustomCommands.Actualizar"
+                        Executed="CommandBinding_Executed_Actualizar"
+                        CanExecute="CommandBinding_CanExecute_Actualizar">
+        </CommandBinding>
+    </Window.CommandBindings>
+    <Window.Resources>
+        <Style TargetType="StackPanel" x:Key="datosStackPanel">
+            <Setter Property="Orientation" Value="Vertical"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+        </Style>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="40"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+            <Setter Property="Margin" Value="0,0,0,5"></Setter>
+        </Style>
+    </Window.Resources>
+    
+    <DockPanel LastChildFill="True">
+        <StackPanel DockPanel.Dock="Bottom"
+                    Orientation="Vertical"
+                    Margin="10"
+                    Height="250">
+            <StackPanel Style="{StaticResource datosStackPanel}">
+                <TextBlock>Aforo restante</TextBlock>
+                <Border Style="{StaticResource separadorBorder}">
+                    <TextBlock Text="{Binding Path=AforoRestante}"></TextBlock>
+                </Border>
+            </StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" 
+                            Style="{StaticResource datosStackPanel}">
+                    <TextBlock>Aforo máximo</TextBlock>
+                    <Border Style="{StaticResource separadorBorder}">
+                        <TextBlock Text="{Binding Path=SalaSeleccionada.Capacidad}"></TextBlock>
+                    </Border>
+
+                </StackPanel>
+                <StackPanel Grid.Column="1" 
+                            Style="{StaticResource datosStackPanel}">
+                    <TextBlock>Aforo ocupado</TextBlock>
+                    <Border Style="{StaticResource separadorBorder}">
+                        <TextBlock Text="{Binding Path=AforoOcupado}"></TextBlock>
+                    </Border>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+
+        <StackPanel DockPanel.Dock="Right"
+                    Margin="10">
+            <Button Width="150"
+                    Command="commands:CustomCommands.Actualizar">Actualizar aforo</Button>
+        </StackPanel>
+        
+        <Border BorderThickness="2px"
+                Margin="10">
+            <ScrollViewer VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Auto">
+                <ListBox ItemsSource="{Binding Path=ListaSalas}"
+                         SelectedItem="{Binding Path=SalaSeleccionada}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock FontSize="30">
+                                <Run Text="Sala "></Run>
+                                <Run Text="{Binding Path=Numero}"></Run>
+                            </TextBlock>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </ScrollViewer>
+        </Border>
+    </DockPanel>
+</Window>

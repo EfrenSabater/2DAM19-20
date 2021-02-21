@@ -9,6 +9,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -49,6 +50,11 @@ namespace GestorCine
             GestionarVentas ventana = new GestionarVentas();
             ventana.Owner = this;
             ventana.Show();
+        }
+
+        private void ayudaButton_Click(object sender, RoutedEventArgs e)
+        {
+            Help.ShowHelp(null, @"Manual.chm");
         }
     }
 }

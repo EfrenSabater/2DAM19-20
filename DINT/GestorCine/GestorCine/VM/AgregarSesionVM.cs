@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace GestorCine.VM
 {
@@ -32,7 +33,15 @@ namespace GestorCine.VM
 
         public void AgregarSesion()
         {
-            _servicio.InsertarSesion(NuevaSesion);
+            int sesionesDeSala = _servicio.CuentaSesionesDeSala(NuevaSesion.Sala.IdSala);
+            if (!(sesionesDeSala >= 3))
+            {
+                _servicio.InsertarSesion(NuevaSesion);
+            }
+            else
+            {
+                MessageBox.Show("ERROR: La sala proporcionada ya está en otras tres sesiones.", "Error");
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

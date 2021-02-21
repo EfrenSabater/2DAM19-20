@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace GestorCine.VM
 {
@@ -28,7 +29,15 @@ namespace GestorCine.VM
 
         public void AgregarVenta()
         {
-            _servicio.InsertarVenta(NuevaVenta);
+            int aforoRestante = NuevaVenta.Sesion.Sala.Capacidad - _servicio.CalcularAforoOcupado(NuevaVenta.Sesion.Sala.IdSala);
+            if (!(aforoRestante < NuevaVenta.Cantidad))
+            {
+                _servicio.InsertarVenta(NuevaVenta);
+            }
+            else
+            {
+                MessageBox.Show("ERROR: El número de entradas supera el aforo restante de la sala.", "Error");
+            }
             NuevaVenta = new Venta();
         }
 

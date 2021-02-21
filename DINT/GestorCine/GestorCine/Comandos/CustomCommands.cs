@@ -17,5 +17,8 @@ namespace GestorCine.Comandos
 
         public static readonly RoutedUICommand Eliminar = new RoutedUICommand(
             "Eliminar", "Eliminar", typeof(CustomCommands));
+
+        public static readonly RoutedUICommand Actualizar = new RoutedUICommand(
+            "Actualizar", "Actualizar", typeof(CustomCommands));
     }
 }

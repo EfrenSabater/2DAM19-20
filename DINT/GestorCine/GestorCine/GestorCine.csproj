@@ -37,6 +37,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Recursos\cine.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="MaterialDesignColors, Version=2.0.0.2422, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignColors.2.0.0\lib\net452\MaterialDesignColors.dll</HintPath>
@@ -84,6 +87,7 @@
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -111,6 +115,9 @@
     <Compile Include="Ventanas\AgregarSesion.xaml.cs">
       <DependentUpon>AgregarSesion.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Ventanas\ConsultarOcupacion.xaml.cs">
+      <DependentUpon>ConsultarOcupacion.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Ventanas\GestionarSalas.xaml.cs">
       <DependentUpon>GestionarSalas.xaml</DependentUpon>
     </Compile>
@@ -126,6 +133,7 @@
     </Compile>
     <Compile Include="VM\AgregarSalaVM.cs" />
     <Compile Include="VM\AgregarSesionVM.cs" />
+    <Compile Include="VM\ConsultarOcupacionVM.cs" />
     <Compile Include="VM\GestionarSalasVM.cs" />
     <Compile Include="VM\GestionarSesionesVM.cs" />
     <Compile Include="VM\GestionarVentasVM.cs" />
@@ -135,6 +143,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Ventanas\AgregarSesion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventanas\ConsultarOcupacion.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -186,11 +198,15 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Manual.chm" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Recursos\cine.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.0.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

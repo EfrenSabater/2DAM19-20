@@ -19,15 +19,16 @@ namespace GestorCine.Servicios
         {
             _servicioApi = new ServicioApiRest();
             _conexion = new SqliteConnection("Data Source=cinedatabase.db");
+            CrearTablas();
             if (Properties.Settings.Default.ultimaConexion.Day != DateTime.Now.Day || Properties.Settings.Default.ultimaConexion == null)
             {
                 VaciarVentas();
                 RellenarPeliculas();
+                CrearTablas();
+                RellenarSalas();
+                RellenarSesiones();
                 Properties.Settings.Default.ultimaConexion = DateTime.Now;
             }
-            CrearTablas();
-            RellenarSalas();
-            RellenarSesiones();
         }
 
         private void CrearTablas()
@@ -35,15 +36,13 @@ namespace GestorCine.Servicios
             _conexion.Open();
             _comando = _conexion.CreateCommand();
             // Código de creación proporcionado por el proyecto
-            _comando.CommandText = @"DROP TABLE IF EXISTS sesiones;
-                                     DROP TABLE IF EXISTS salas;
-                                    CREATE TABLE salas (
+            _comando.CommandText = @"CREATE TABLE IF NOT EXISTS salas (
                                         idSala     INTEGER PRIMARY KEY AUTOINCREMENT,
                                         numero     TEXT,
                                         capacidad  INTEGER,
                                         disponible BOOLEAN DEFAULT (true) 
                                     );
-                                    CREATE TABLE sesiones (
+                                    CREATE TABLE IF NOT EXISTS sesiones (
                                         idSesion INTEGER PRIMARY KEY AUTOINCREMENT,
                                         pelicula INTEGER REFERENCES peliculas (idPelicula),
                                         sala     INTEGER REFERENCES salas (idSala),
@@ -160,6 +159,28 @@ namespace GestorCine.Servicios
             return salas;
         }
 
+        // Devuelve todos los nombres que existen en la tabla salas
+        public List<string> GetNombresSalas()
+        {
+            _conexion.Open();
+            _comando = _conexion.CreateCommand();
+
+            _comando.CommandText = "SELECT numero FROM salas";
+            SqliteDataReader lector = _comando.ExecuteReader();
+            List<string> resultado = new List<string>();
+            if (lector != null)
+            {
+                while (lector.Read())
+                {
+                    resultado.Add(lector.GetString(0));
+                }
+            }
+
+            lector.Close();
+            _conexion.Close();
+            return resultado;
+        }
+
         public void InsertarSala(Sala sala)
         {
             _conexion.Open();
@@ -229,6 +250,29 @@ namespace GestorCine.Servicios
             if (lector.HasRows)
             {
                 resultado = true;
+            }
+
+            lector.Close();
+            _conexion.Close();
+            return resultado;
+        }
+
+        // Calcula cuánta gente hay en una sala dependiendo de las ventas
+        public int CalcularAforoOcupado(int idSala)
+        {
+            _conexion.Open();
+            _comando = _conexion.CreateCommand();
+
+            _comando.CommandText = "SELECT salas.idSala, SUM(cantidad) FROM ventas JOIN sesiones ON ventas.sesion=sesiones.idSesion JOIN salas ON sesiones.sala=salas.idSala GROUP BY ventas.sesion HAVING salas.idSala=@idSala ";
+            _comando.Parameters.Add("@idSala", SqliteType.Integer);
+            _comando.Parameters["@idSala"].Value = idSala;
+            int resultado = -1;
+            SqliteDataReader lector = _comando.ExecuteReader();
+
+            if (lector.HasRows)
+            {
+                lector.Read();
+                resultado = lector.GetInt32(1);
             }
 
             lector.Close();
@@ -306,6 +350,21 @@ namespace GestorCine.Servicios
             _conexion.Close();
             return sesiones;
         }*/
+
+        // Dada una sala, devuelve el número de sesiones en las que se encuentra
+        public int CuentaSesionesDeSala(int idSala)
+        {
+            _conexion.Open();
+            _comando = _conexion.CreateCommand();
+
+            _comando.CommandText = "SELECT COUNT(*) FROM sesiones WHERE sala=@idSala ";
+            _comando.Parameters.Add("@idSala", SqliteType.Integer);
+            _comando.Parameters["@idSala"].Value = idSala;
+            int resultado = Convert.ToInt32(_comando.ExecuteScalar());
+
+            _conexion.Close();
+            return resultado;
+        }
 
         public void InsertarSesion(Sesion sesion)
         {

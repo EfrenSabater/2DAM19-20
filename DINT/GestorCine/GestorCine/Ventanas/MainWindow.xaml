@@ -16,20 +16,29 @@
         Title="GestorCine"
         Height="450" 
         Width="600"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize"
+        Icon="/Recursos/cine.ico">
     <Window.Resources>
         <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
             <Setter Property="Margin" Value="8"></Setter>
         </Style>
     </Window.Resources>
-    <StackPanel Orientation="Vertical"
+    <DockPanel>
+        <ToolBarTray DockPanel.Dock="Top">
+            <ToolBar>
+                <Button x:Name="ayudaButton" 
+                        FontFamily="Wingdings" 
+                        ToolTip="Manual"
+                        Click="ayudaButton_Click">&amp;</Button>
+            </ToolBar>
+        </ToolBarTray>
+        <StackPanel Orientation="Vertical"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center">
-        <Button x:Name="gestionarSalasButton" Click="gestionarSalasButton_Click">Gestionar salas</Button>
-        <Button>Consultar salas</Button>
-        <Button x:Name="gestionarSesionesButton" Click="gestionarSesionesButton_Click">Gestionar sesiones</Button>
-        <Button x:Name="gestionarVentasButton" Click="gestionarVentasButton_Click">Venta de entradas</Button>
-        
-        
-    </StackPanel>
+            <Button x:Name="gestionarSalasButton" Click="gestionarSalasButton_Click">Gestionar salas</Button>
+            <!--<Button>Consultar salas</Button>-->
+            <Button x:Name="gestionarSesionesButton" Click="gestionarSesionesButton_Click">Gestionar sesiones</Button>
+            <Button x:Name="gestionarVentasButton" Click="gestionarVentasButton_Click">Venta de entradas</Button>
+        </StackPanel>
+    </DockPanel>
 </Window>

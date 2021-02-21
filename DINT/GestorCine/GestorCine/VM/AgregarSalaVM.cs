@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace GestorCine.VM
 {
@@ -27,7 +28,16 @@ namespace GestorCine.VM
 
         public void AgregarSala()
         {
-            _servicio.InsertarSala(NuevaSala);
+            List<string> numeros = _servicio.GetNombresSalas();
+            if (!numeros.Contains(NuevaSala.Numero))
+            {
+                _servicio.InsertarSala(NuevaSala);
+            }
+            else
+            {
+                MessageBox.Show("ERROR: Se ha intentado introducir una sala con un nombre que ya existe.", "Error");
+            }
+            
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

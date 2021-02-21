@@ -41,6 +41,13 @@ namespace GestorCine.Ventanas
             _vm.LimpiarVenta();
         }
 
+        private void consultarSalasButton_Click(object sender, RoutedEventArgs e)
+        {
+            ConsultarOcupacion ventana = new ConsultarOcupacion();
+            ventana.Owner = this;
+            ventana.Show();
+        }
+
         /*
         private void actualizarButton_Click(object sender, RoutedEventArgs e)
         {
