@@ -22,14 +22,7 @@ namespace GestorCine.VM
 
         public bool SesionValida()
         {
-            if (NuevaSesion == null || NuevaSesion.Pelicula.Titulo.Equals("") || NuevaSesion.Sala.Numero.Equals(""))
-            {
-                return false;
-            }
-            else
-            {
-                return NuevaSesion.Hora != "";
-            }
+            return true;
         }
 
         public void AgregarSesion()

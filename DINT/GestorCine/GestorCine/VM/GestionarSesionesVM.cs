@@ -14,15 +14,18 @@ namespace GestorCine.VM
     {
 
         public ObservableCollection<Sesion> ListaSesiones { get; set; }
-        public Sesion NuevaSesion;
-        public Sesion SesionSeleccionada;
+        public ObservableCollection<Pelicula> ListaPeliculas { get; set; }
+        public ObservableCollection<Sala> ListaSalas { get; set; }
+        public Sesion NuevaSesion { get; set; }
+        public Sesion SesionSeleccionada { get; set; }
         private ServicioBD _servicio;
 
         public GestionarSesionesVM() 
         {
             _servicio = new ServicioBD();
-            NuevaSesion = new Sesion();
             ListaSesiones = _servicio.ObtenerSesiones();
+            ListaPeliculas = _servicio.ObtenerPeliculas();
+            ListaSalas = _servicio.ObtenerSalas();
         }
 
         // Click en Modificar Sesion

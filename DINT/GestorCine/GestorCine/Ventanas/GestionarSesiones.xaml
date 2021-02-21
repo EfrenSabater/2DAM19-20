@@ -34,7 +34,7 @@
         
         <Style TargetType="TextBlock">
             <Setter Property="HorizontalAlignment" Value="Center"></Setter>
-            <Setter Property="FontSize" Value="40"></Setter>
+            <Setter Property="FontSize" Value="30"></Setter>
             <Setter Property="Margin" Value="0,20,0,0"></Setter>
         </Style>
 
@@ -100,9 +100,27 @@
                            HorizontalAlignment="Center"
                            Margin="0,0,0,20">Modificando sesión</TextBlock>
                 <TextBlock Style="{StaticResource modificarTextBlock}">Película a emitir:</TextBlock>
-                <TextBox Text="{Binding Path=NuevaSesion.Pelicula.Titulo}"></TextBox>
+                <ComboBox ItemsSource="{Binding Path=ListaPeliculas}"
+                          SelectedItem="{Binding Path=NuevaSesion.Pelicula}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock>
+                                <Run Text="{Binding Path=Titulo}"></Run>
+                            </TextBlock>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
                 <TextBlock Style="{StaticResource modificarTextBlock}">Sala en la que se emite:</TextBlock>
-                <TextBox Text="{Binding Path=NuevaSesion.Sala.Numero}"></TextBox>
+                <ComboBox ItemsSource="{Binding Path=ListaSalas}"
+                          SelectedItem="{Binding Path=NuevaSesion.Sala}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock>
+                                <Run Text="{Binding Path=Numero}"></Run>
+                            </TextBlock>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
                 <TextBlock Style="{StaticResource modificarTextBlock}">Hora de emisión:</TextBlock>
                 <TextBox Text="{Binding Path=NuevaSesion.Hora}"></TextBox>
                 <Grid>
@@ -133,6 +151,8 @@
                             <TextBlock FontSize="30">
                                 <Run Text="Sesión de las "></Run>
                                 <Run Text="{Binding Path=Hora}"></Run>
+                                <Run Text="     Película: "></Run>
+                                <Run Text="{Binding Path=Pelicula.Titulo}"></Run>
                             </TextBlock>
                         </DataTemplate>
                     </ListBox.ItemTemplate>

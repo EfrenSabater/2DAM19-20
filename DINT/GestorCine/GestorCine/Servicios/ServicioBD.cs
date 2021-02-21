@@ -66,7 +66,10 @@ namespace GestorCine.Servicios
             _comando = _conexion.CreateCommand();
 
             ObservableCollection<Pelicula> peliculas = _servicioApi.ObtenerPeliculas();
-            _comando.CommandText = @"DROP TABLE IF EXISTS peliculas;
+            _comando.CommandText = @"DROP TABLE IF EXISTS ventas;
+                                     DROP TABLE IF EXISTS sesiones;
+                                     DROP TABLE IF EXISTS salas;
+                                     DROP TABLE IF EXISTS peliculas;
                                      CREATE TABLE peliculas(
                                         idPelicula   INTEGER PRIMARY KEY,
                                         titulo       TEXT,
@@ -154,7 +157,6 @@ namespace GestorCine.Servicios
 
             lector.Close();
             _conexion.Close();
-
             return salas;
         }
 
@@ -177,22 +179,21 @@ namespace GestorCine.Servicios
 
         public Sala EncontrarSala(int idSala)
         {
-            _conexion.Open();
-            _comando = _conexion.CreateCommand();
+            SqliteCommand _comandoLocal = _conexion.CreateCommand();
 
-            _comando.CommandText = "SELECT * FROM salas WHERE idSala=@idSala";
-            _comando.Parameters.Add("@idSala", SqliteType.Integer);
-            _comando.Parameters["@idSala"].Value = idSala;
-            SqliteDataReader lector = _comando.ExecuteReader();
+            _comandoLocal.CommandText = "SELECT * FROM salas WHERE idSala=@idSala";
+            _comandoLocal.Parameters.Add("@idSala", SqliteType.Integer);
+            _comandoLocal.Parameters["@idSala"].Value = idSala;
+            SqliteDataReader lectorSala = _comandoLocal.ExecuteReader();
 
             Sala resultado = null;
-            if (lector.HasRows)
+            if (lectorSala.HasRows)
             {
-                resultado = new Sala(lector.GetInt32(0), lector.GetString(1), lector.GetInt32(2), lector.GetBoolean(3));
+                lectorSala.Read();
+                resultado = new Sala(lectorSala.GetInt32(0), lectorSala.GetString(1), lectorSala.GetInt32(2), lectorSala.GetBoolean(3));
             }
 
-            lector.Close();
-            _conexion.Close();
+            lectorSala.Close();
             return resultado;
         }
 
@@ -253,9 +254,11 @@ namespace GestorCine.Servicios
                 while (lector.Read())
                 {
                     int idSesion = lector.GetInt32(0);
-                    Pelicula p = EncontrarPelicula(lector.GetInt32(1));
-                    Sala s = EncontrarSala(lector.GetInt32(2));
+                    int idPelicula = lector.GetInt32(1);
+                    int idSala = lector.GetInt32(2);
                     string hora = lector.GetString(3);
+                    Pelicula p = EncontrarPelicula(idPelicula);
+                    Sala s = EncontrarSala(idSala);
                     sesiones.Add(new Sesion(idSesion, p, s, hora));
                 }
             }
@@ -326,24 +329,53 @@ namespace GestorCine.Servicios
         /* ********************************* */
         /*  MÉTODOS PARA LA TABLA peliculas  */
         /* ********************************* */
-        public Pelicula EncontrarPelicula(int idPelicula)
+        public ObservableCollection<Pelicula> ObtenerPeliculas()
         {
+            ObservableCollection<Pelicula> peliculas = new ObservableCollection<Pelicula>();
+
             _conexion.Open();
             _comando = _conexion.CreateCommand();
 
-            _comando.CommandText = "SELECT * FROM peliculas WHERE idPelicula=@idPelicula";
-            _comando.Parameters.Add("@idPelicula", SqliteType.Integer);
-            _comando.Parameters["@idPelicula"].Value = idPelicula;
+            _comando.CommandText = "SELECT * FROM peliculas";
             SqliteDataReader lector = _comando.ExecuteReader();
 
-            Pelicula resultado = null;
             if (lector.HasRows)
             {
-                resultado = new Pelicula(lector.GetInt32(0), lector.GetString(1), lector.GetString(2), lector.GetInt32(3), lector.GetString(4), lector.GetString(5));
+                while (lector.Read())
+                {
+                    int idPelicula = lector.GetInt32(0);
+                    string titulo = lector.GetString(1);
+                    string cartel = lector.GetString(2);
+                    int anyo = lector.GetInt32(3);
+                    string genero = lector.GetString(4);
+                    string calificacion = lector.GetString(5);
+                    peliculas.Add(new Pelicula(idPelicula, titulo, cartel, anyo, genero, calificacion));
+                }
             }
 
             lector.Close();
             _conexion.Close();
+            return peliculas;
+        }
+
+        public Pelicula EncontrarPelicula(int idPelicula)
+        {
+            SqliteCommand _comandoLocal;
+            _comandoLocal = _conexion.CreateCommand();
+
+            _comandoLocal.CommandText = "SELECT * FROM peliculas WHERE idPelicula=@idPelicula";
+            _comandoLocal.Parameters.Add("@idPelicula", SqliteType.Integer);
+            _comandoLocal.Parameters["@idPelicula"].Value = idPelicula;
+            SqliteDataReader lectorPelicula = _comandoLocal.ExecuteReader();
+
+            Pelicula resultado = null;
+            if (lectorPelicula.HasRows)
+            {
+                lectorPelicula.Read();
+                resultado = new Pelicula(lectorPelicula.GetInt32(0), lectorPelicula.GetString(1), lectorPelicula.GetString(2), lectorPelicula.GetInt32(3), lectorPelicula.GetString(4), lectorPelicula.GetString(5));
+            }
+
+            lectorPelicula.Close();
             return resultado;
         }
 
@@ -379,6 +411,6 @@ namespace GestorCine.Servicios
                 _conexion.Close();
             }
         }
-        
+
     }
 }
